@@ -1,6 +1,9 @@
 plugins {
     id 'java'
+    id 'io.qameta.allure' version '2.7.0'
 }
+
+sourceCompatibility = 1.8
 
 group 'org.example'
 version '1.0-SNAPSHOT'
@@ -20,4 +23,21 @@ dependencies {
     testImplementation 'com.codeborne:selenide:5.13.0'
     testRuntimeOnly('io.qameta.allure:allure-junit5:2.13.0')
     implementation('io.qameta.allure:allure-okhttp3:2.13.0')
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+test {
+    useJUnitPlatform()
+    systemProperties = [
+            'file.encoding'   : 'UTF-8',
+            'selenide.browser': 'chrome',
+    ]
+}
+
+allure {
+    version = '2.10.0'
+    downloadLinkFormat = 'https://dl.bintray.com/qameta/maven/io/qameta/allure/allure-commandline/%s/allure-commandline-%<s.zip'
 }
