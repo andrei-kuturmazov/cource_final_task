@@ -12,8 +12,17 @@ public class FlowTest {
     @Test
     @DisplayName("Login test")
     @Order(1)
-    void loginTest() {
+    void loginTest() throws InterruptedException {
         loginPage.openLoginPage();
         loginPage.enterCredentialsAndSubmitLogin();
+        loginPage.switchToAdminTabPanel();
+        loginPage.addNewUser();
+        loginPage.fillUserCreationFormAndSubmit();
+
+
+
+
+
+        Thread.sleep(5000);
     }
 }
