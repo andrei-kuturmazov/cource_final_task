@@ -2,6 +2,7 @@ package tests;
 
 
 import org.junit.jupiter.api.*;
+import pages.LeavePage;
 import pages.LoginPage;
 import utils.TestInit;
 
@@ -9,6 +10,7 @@ import utils.TestInit;
 public class FlowTest extends TestInit {
 
     LoginPage loginPage = new LoginPage();
+    LeavePage leavePage = new LeavePage();
 
     @Test
     @DisplayName("Login test")
@@ -64,10 +66,17 @@ public class FlowTest extends TestInit {
     }
 
     @Test
-    @DisplayName("Check logout option")
+    @DisplayName("Check assign leave form functionality")
     @Order(8)
-    void checkLogout() throws InterruptedException {
+    void checkAssignLeave() throws InterruptedException {
+        leavePage.switchToAssignLeaveTab();
+        leavePage.fillLeaveForm();
+    }
+
+    @Test
+    @DisplayName("Check logout option")
+    @Order(9)
+    void checkLogout() {
         loginPage.logoutFromApp();
-//        Thread.sleep(2000);
     }
 }
