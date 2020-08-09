@@ -1,12 +1,11 @@
 package tests;
 
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import pages.LoginPage;
 import utils.TestInit;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class FlowTest extends TestInit {
 
     LoginPage loginPage = new LoginPage();
@@ -16,18 +15,22 @@ public class FlowTest extends TestInit {
     @Order(1)
     void loginTest() throws InterruptedException {
         loginPage.openLoginPage();
-        loginPage.enterCredentialsAndSubmitLogin();
+        loginPage.loginToApp();
 
-//        loginPage.switchToAdminTabPanel();
-        //loginPage.addNewUser();
-        //loginPage.fillUserCreationFormAndSubmit();
+        loginPage.switchToAdminTabPanel();
+//        loginPage.addUser();
+//        loginPage.fillUserCreationFormAndSubmit();
 //        loginPage.switchToJobTitlesTab();
-//        loginPage.addNewJobTitle();
-//        loginPage.addNewCandidate();
+//        loginPage.addJobTitle();
+//        loginPage.checkSuccessMessage();
+//        loginPage.deleteJobTitles();
+//        loginPage.addCandidateAndCheckCreation();
 //        loginPage.switchToAssignLeaveTab();
 //        loginPage.checkDashboardElements();
-        loginPage.logoutFromApp();
-        Thread.sleep(5000);
+//        loginPage.logoutFromApp();
+//        loginPage.openSalesProfile();
+
+//        Thread.sleep(5000);
     }
 
     @Test
@@ -36,5 +39,30 @@ public class FlowTest extends TestInit {
     void checkDashboardElements() {
         loginPage.switchToDashboardTab();
         loginPage.checkDashboardElements();
+    }
+
+    @Test
+    @DisplayName("Check logout option")
+    @Order(3)
+    void checkJobTitlesAdding() {
+        loginPage.switchToAdminTabPanel();
+        loginPage.switchToJobTitlesTab();
+        loginPage.addJobTitle();
+    }
+
+    @Test
+    @DisplayName("Delete added job titles")
+    @Order(4)
+    void checkJobTitlesDeleting() {
+        loginPage.switchToAdminTabPanel();
+        loginPage.switchToJobTitlesTab();
+        loginPage.deleteJobTitles();
+    }
+
+    @Test
+    @DisplayName("Check logout option")
+    @Order(5)
+    void checkLogout() {
+        loginPage.logoutFromApp();
     }
 }
