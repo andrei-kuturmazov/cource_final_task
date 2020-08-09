@@ -21,7 +21,7 @@ public class FlowTest extends TestInit {
     }
 
     @Test
-    @DisplayName("Check User creation")
+    @DisplayName("User creation test")
     @Order(2)
     void checkUserCreation() throws InterruptedException {
         loginPage.switchToAdminTabPanel();
@@ -29,7 +29,7 @@ public class FlowTest extends TestInit {
     }
 
     @Test
-    @DisplayName("Check Job titles adding")
+    @DisplayName("Job titles adding test")
     @Order(3)
     void checkJobTitlesAdding() {
         loginPage.switchToAdminTabPanel();
@@ -38,35 +38,35 @@ public class FlowTest extends TestInit {
     }
 
     @Test
-    @DisplayName("Check job titles delete")
+    @DisplayName("Job titles deleting test")
     @Order(4)
     void checkJobTitlesDeleting() {
         loginPage.deleteJobTitles();
     }
 
     @Test
-    @DisplayName("Check candidate adding")
+    @DisplayName("Candidate adding test")
     @Order(5)
     void checkCandidateAdding() {
         loginPage.addCandidateAndCheckCreation();
     }
 
     @Test
-    @DisplayName("Check dashboard elements interaction")
+    @DisplayName("Dashboard elements interaction test")
     @Order(6)
     void checkDashboardElements() {
         loginPage.switchToDashboardTab();
         loginPage.checkDashboardElements();
     }
     @Test
-    @DisplayName("Check sales manager profile")
+    @DisplayName("Sales manager profile test")
     @Order(7)
     void checkSalesProfile() {
         loginPage.openSalesProfile();
     }
 
     @Test
-    @DisplayName("Check assign leave form functionality")
+    @DisplayName("assign leave form test")
     @Order(8)
     void checkAssignLeave() throws InterruptedException {
         leavePage.switchToAssignLeaveTab();
@@ -74,7 +74,7 @@ public class FlowTest extends TestInit {
     }
 
     @Test
-    @DisplayName("Check logout option")
+    @DisplayName("logout functionality test")
     @Order(9)
     void checkLogout() {
         loginPage.logoutFromApp();
