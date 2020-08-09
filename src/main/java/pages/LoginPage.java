@@ -82,6 +82,7 @@ public class LoginPage {
         inputUserName();
         Thread.sleep(1000);
         submitCreationForm();
+        checkSuccessMessage();
     }
 
     public void switchToJobTitlesTab() {
@@ -90,7 +91,7 @@ public class LoginPage {
     }
 
     public void addJobTitle() {
-        for (String item: jobTitles) {
+        for (String item : jobTitles) {
             addButton.click();
             jobTitleField.sendKeys(item);
             formSaveButton.click();

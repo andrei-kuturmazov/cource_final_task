@@ -68,6 +68,6 @@ public class FlowTest extends TestInit {
     @Order(8)
     void checkLogout() throws InterruptedException {
         loginPage.logoutFromApp();
-        Thread.sleep(2000);
+//        Thread.sleep(2000);
     }
 }
