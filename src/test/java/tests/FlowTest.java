@@ -3,6 +3,7 @@ package tests;
 
 import org.junit.jupiter.api.*;
 import pages.DashboardPage;
+import pages.JobTitlesPage;
 import pages.LeavePage;
 import pages.LoginPage;
 import utils.TestInit;
@@ -13,6 +14,7 @@ public class FlowTest extends TestInit {
     LoginPage loginPage = new LoginPage();
     LeavePage leavePage = new LeavePage();
     DashboardPage dashboardPage = new DashboardPage();
+    JobTitlesPage jobTitlesPage = new JobTitlesPage();
 
     @Test
     @DisplayName("Login test")
@@ -35,15 +37,15 @@ public class FlowTest extends TestInit {
     @Order(3)
     void checkJobTitlesAdding() {
         loginPage.switchToAdminTabPanel();
-        loginPage.switchToJobTitlesTab();
-        loginPage.addJobTitle();
+        jobTitlesPage.switchToJobTitlesTab();
+        jobTitlesPage.addJobTitle();
     }
 
     @Test
     @DisplayName("Job titles deleting test")
     @Order(4)
     void checkJobTitlesDeleting() {
-        loginPage.deleteJobTitles();
+        jobTitlesPage.deleteJobTitles();
     }
 
     @Test

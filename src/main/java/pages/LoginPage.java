@@ -5,15 +5,12 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import utils.Property;
 
-import java.util.Arrays;
-import java.util.List;
 
 import static com.codeborne.selenide.Selenide.*;
 
 public class LoginPage {
 
     public String baseUrl = Property.getProperty("url");
-    private static List<String> jobTitles = Arrays.asList("The old master", "Master Chef", "National Hero");
 
     private final SelenideElement loginField = $x("//input[@id='txtUsername']");
     private final SelenideElement passwordField = $x("//input[@id='txtPassword']");
@@ -23,10 +20,6 @@ public class LoginPage {
     private final SelenideElement employeeNameField = $x("//input[@id='systemUser_employeeName_empName']");
     private final SelenideElement userNameField = $x("//input[@id='systemUser_userName']");
     private final SelenideElement formSaveButton = $x("//input[@id='btnSave']");
-    private final SelenideElement jobDropdown = $x("//a[@id='menu_admin_Job']");
-    private final SelenideElement jobTitlesLink = $x("//a[@id='menu_admin_viewJobTitleList']");
-    private final SelenideElement successMessage = $x("//div[@class='fadable']");
-    private final SelenideElement jobTitleField = $x("//input[@id='jobTitle_jobTitle']");
     private final SelenideElement recruitmentTabLink = $x("//a[@id='menu_recruitment_viewRecruitmentModule']");
     private final SelenideElement candidateFirstNameField = $x("//input[@id='addCandidate_firstName']");
     private final SelenideElement candidateLastNameField = $x("//input[@id='addCandidate_lastName']");
@@ -36,8 +29,7 @@ public class LoginPage {
     private final SelenideElement errorMessage = $x("//div[@class='message error']");
     private final SelenideElement pimTabLink = $x("//a[@id='menu_pim_viewPimModule']");
     private final SelenideElement salesProfile = $x("//td[contains(text(), 'Sales ')]/preceding-sibling::td[1]/a");
-    private final SelenideElement deleteButton = $x("//input[@id='btnDelete']");
-    private final SelenideElement deleteConfirmationButton = $x("//input[@id='dialogDeleteBtn']");
+    private final SelenideElement successMessage = $x("//div[@class='fadable']");
 
     public void openLoginPage() {
         Selenide.open(baseUrl);
@@ -78,32 +70,8 @@ public class LoginPage {
         checkSuccessMessage();
     }
 
-    public void switchToJobTitlesTab() {
-        jobDropdown.hover();
-        jobTitlesLink.click();
-    }
-
-    public void addJobTitle() {
-        for (String item : jobTitles) {
-            addButton.click();
-            jobTitleField.sendKeys(item);
-            formSaveButton.click();
-            checkSuccessMessage();
-        }
-    }
-
     public void checkSuccessMessage() {
         successMessage.isDisplayed();
-    }
-
-    public void deleteJobTitles() {
-        for (String item : jobTitles) {
-            String xPath = String.format("//a[contains(text(), '%s')]/parent::td/preceding-sibling::td", item);
-            $x(xPath).click();
-        }
-        deleteButton.click();
-        deleteConfirmationButton.click();
-        checkSuccessMessage();
     }
 
     public void logoutFromApp() {

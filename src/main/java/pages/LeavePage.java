@@ -14,7 +14,7 @@ public class LeavePage {
     private final SelenideElement startDateLeaveCalendar = $x("//input[@id='assignleave_txtFromDate']");
     private final SelenideElement firstDateOfMonth = $x("//a[contains(text(), '1')]");
     private final SelenideElement endDateLeaveCalendar = $x("//input[@id='assignleave_txtToDate']");
-    private final SelenideElement lastDateOfMonth = $x("//a[contains(text(), '28')]");
+    private final SelenideElement fifthDateOfMonth = $x("//a[contains(text(), '5')]");
     private final SelenideElement assignButton = $x("//input[@id='assignBtn']");
     private final SelenideElement confirmButton = $x("//input[@id='confirmOkButton']");
 
@@ -24,13 +24,13 @@ public class LeavePage {
     }
 
     public void fillLeaveForm() throws InterruptedException {
-        employeeNameAssignLeave.sendKeys("Hannah Flores");
+        employeeNameAssignLeave.sendKeys("Linda Anderson");
         leaveTypeDropdown.click();
         flmsLeaveOption.click();
         startDateLeaveCalendar.click();
         firstDateOfMonth.click();
         endDateLeaveCalendar.click();
-        lastDateOfMonth.click();
+        fifthDateOfMonth.click();
         Thread.sleep(1000);
         assignButton.click();
         confirmButton.click();
