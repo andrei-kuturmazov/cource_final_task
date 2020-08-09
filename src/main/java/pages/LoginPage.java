@@ -31,10 +31,6 @@ public class LoginPage {
     private final SelenideElement candidateFirstNameField = $x("//input[@id='addCandidate_firstName']");
     private final SelenideElement candidateLastNameField = $x("//input[@id='addCandidate_lastName']");
     private final SelenideElement candidateEmail = $x("//input[@id='addCandidate_email']");
-    private final SelenideElement dashBoardTabLink = $x("//a[@id='menu_dashboard_index']");
-    private final SelenideElement dashBoardDiagram = $x("//div[@id='dashboard__employeeDistribution']");
-    private final SelenideElement dashBoardLegend = $x("//div[@id='panel_draggable_1_1']");
-    private final SelenideElement dashBoardPendingRequests = $x("//div[@id='task-list-group-panel-menu_holder']");
     private final SelenideElement userLink = $x("//a[@id='welcome']");
     private final SelenideElement logoutLink = $x("//a[contains(text(), 'Logout')]");
     private final SelenideElement errorMessage = $x("//div[@class='message error']");
@@ -108,16 +104,6 @@ public class LoginPage {
         deleteButton.click();
         deleteConfirmationButton.click();
         checkSuccessMessage();
-    }
-
-    public void switchToDashboardTab() {
-        dashBoardTabLink.click();
-    }
-
-    public void checkDashboardElements() {
-        dashBoardDiagram.shouldBe(Condition.visible);
-        dashBoardLegend.shouldBe(Condition.visible);
-        dashBoardPendingRequests.shouldBe(Condition.visible);
     }
 
     public void logoutFromApp() {

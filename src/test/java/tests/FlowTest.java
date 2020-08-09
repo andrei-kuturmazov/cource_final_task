@@ -2,6 +2,7 @@ package tests;
 
 
 import org.junit.jupiter.api.*;
+import pages.DashboardPage;
 import pages.LeavePage;
 import pages.LoginPage;
 import utils.TestInit;
@@ -11,6 +12,7 @@ public class FlowTest extends TestInit {
 
     LoginPage loginPage = new LoginPage();
     LeavePage leavePage = new LeavePage();
+    DashboardPage dashboardPage = new DashboardPage();
 
     @Test
     @DisplayName("Login test")
@@ -55,8 +57,8 @@ public class FlowTest extends TestInit {
     @DisplayName("Dashboard elements interaction test")
     @Order(6)
     void checkDashboardElements() {
-        loginPage.switchToDashboardTab();
-        loginPage.checkDashboardElements();
+        dashboardPage.switchToDashboardTab();
+        dashboardPage.checkDashboardElements();
     }
     @Test
     @DisplayName("Sales manager profile test")
