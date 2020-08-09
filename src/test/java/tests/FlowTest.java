@@ -13,17 +13,9 @@ public class FlowTest extends TestInit {
     @Test
     @DisplayName("Login test")
     @Order(1)
-    void loginTest() throws InterruptedException {
+    void loginTest() {
         loginPage.openLoginPage();
         loginPage.loginToApp();
-
-//        loginPage.switchToAdminTabPanel();
-//        loginPage.addUser();
-//        loginPage.fillUserCreationFormAndSubmit();
-//        loginPage.switchToAssignLeaveTab();
-//        loginPage.openSalesProfile();
-
-//        Thread.sleep(5000);
     }
 
     @Test
@@ -63,6 +55,12 @@ public class FlowTest extends TestInit {
     void checkDashboardElements() {
         loginPage.switchToDashboardTab();
         loginPage.checkDashboardElements();
+    }
+    @Test
+    @DisplayName("Check sales manager profile")
+    @Order(7)
+    void checkSalesProfile() {
+        loginPage.openSalesProfile();
     }
 
     @Test
