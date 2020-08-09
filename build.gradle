@@ -36,6 +36,7 @@ test {
     systemProperties = [
             'file.encoding'   : 'UTF-8',
             'selenide.browser': 'chrome',
+            'allure.results.directory' : 'build/allure-results'
     ]
 }
 

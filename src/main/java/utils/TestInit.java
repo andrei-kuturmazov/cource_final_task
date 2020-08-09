@@ -13,9 +13,9 @@ public class TestInit {
     static void setUp() {
         SelenideLogger.addListener("allure", new AllureSelenide());
         Configuration.timeout = 5000;
-        Configuration.remote = "http://localhost:4444/wd/hub";
-        Configuration.browserSize = "1920x1080";
-        Configuration.browserCapabilities.setCapability("enableVNC", true);
+//        Configuration.remote = "http://localhost:4444/wd/hub";
+//        Configuration.browserSize = "1920x1080";
+//        Configuration.browserCapabilities.setCapability("enableVNC", true);
     }
 
     @AfterAll
