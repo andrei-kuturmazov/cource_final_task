@@ -37,6 +37,8 @@ public class LoginPage {
     private final SelenideElement dashBoardDiagram = $x("//div[@id='dashboard__employeeDistribution']");
     private final SelenideElement dashBoardLegend = $x("//div[@id='panel_draggable_1_1']");
     private final SelenideElement dashBoardPendingRequests = $x("//div[@id='task-list-group-panel-menu_holder']");
+    private final SelenideElement userLink = $x("//a[@id='welcome']");
+    private final SelenideElement logoutLink = $x("//div[@id='welcome-menu']/ul/li[2]");
 
     public void openLoginPage() {
         Selenide.open(baseUrl);
@@ -106,6 +108,11 @@ public class LoginPage {
     public void switchToAssignLeaveTab() {
         leaveMenuTabLink.click();
         assignLeaveLink.click();
+    }
+
+    public void logoutFromApp() {
+        userLink.click();
+        logoutLink.click();
     }
 
     public void addNewCandidate() {

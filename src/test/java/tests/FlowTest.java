@@ -25,7 +25,8 @@ public class FlowTest extends TestInit {
 //        loginPage.addNewJobTitle();
 //        loginPage.addNewCandidate();
 //        loginPage.switchToAssignLeaveTab();
-        loginPage.checkDashboardElements();
+//        loginPage.checkDashboardElements();
+        loginPage.logoutFromApp();
         Thread.sleep(5000);
     }
 
