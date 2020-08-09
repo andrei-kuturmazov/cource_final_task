@@ -30,6 +30,13 @@ public class LoginPage {
     private final SelenideElement candidateFirstNameField = $x("//input[@id='addCandidate_firstName']");
     private final SelenideElement candidateLastNameField = $x("//input[@id='addCandidate_lastName']");
     private final SelenideElement candidateEmail = $x("//input[@id='addCandidate_email']");
+    private final SelenideElement leaveMenuTabLink = $x("//a[@id='menu_leave_viewLeaveModule']");
+    private final SelenideElement assignLeaveLink = $x("//a[@id='menu_leave_assignLeave']");
+    private final SelenideElement employeeNameAssignLeave = $x("//input[@id='assignleave_txtEmployee_empName']");
+    private final SelenideElement dashBoardTabLink = $x("//a[@id='menu_dashboard_index']");
+    private final SelenideElement dashBoardDiagram = $x("//div[@id='dashboard__employeeDistribution']");
+    private final SelenideElement dashBoardLegend = $x("//div[@id='panel_draggable_1_1']");
+    private final SelenideElement dashBoardPendingRequests = $x("//div[@id='task-list-group-panel-menu_holder']");
 
     public void openLoginPage() {
         Selenide.open(baseUrl);
@@ -84,6 +91,21 @@ public class LoginPage {
 
     public void deleteAddedJobTitles() {
 
+    }
+
+    public void switchToDashboardTab() {
+        dashBoardTabLink.click();
+    }
+
+    public void checkDashboardElements() {
+        dashBoardDiagram.shouldBe(Condition.visible);
+        dashBoardLegend.shouldBe(Condition.visible);
+        dashBoardPendingRequests.shouldBe(Condition.visible);
+    }
+
+    public void switchToAssignLeaveTab() {
+        leaveMenuTabLink.click();
+        assignLeaveLink.click();
     }
 
     public void addNewCandidate() {

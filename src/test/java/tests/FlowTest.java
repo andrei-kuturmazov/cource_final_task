@@ -17,13 +17,23 @@ public class FlowTest extends TestInit {
     void loginTest() throws InterruptedException {
         loginPage.openLoginPage();
         loginPage.enterCredentialsAndSubmitLogin();
-        loginPage.switchToAdminTabPanel();
+
+//        loginPage.switchToAdminTabPanel();
         //loginPage.addNewUser();
         //loginPage.fillUserCreationFormAndSubmit();
-        loginPage.switchToJobTitlesTab();
-        loginPage.addNewJobTitle();
-        loginPage.addNewCandidate();
-
+//        loginPage.switchToJobTitlesTab();
+//        loginPage.addNewJobTitle();
+//        loginPage.addNewCandidate();
+//        loginPage.switchToAssignLeaveTab();
+        loginPage.checkDashboardElements();
         Thread.sleep(5000);
+    }
+
+    @Test
+    @DisplayName("Check dashboard elements interaction")
+    @Order(2)
+    void checkDashboardElements() {
+        loginPage.switchToDashboardTab();
+        loginPage.checkDashboardElements();
     }
 }
