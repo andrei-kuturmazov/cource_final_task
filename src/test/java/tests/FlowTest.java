@@ -17,32 +17,25 @@ public class FlowTest extends TestInit {
         loginPage.openLoginPage();
         loginPage.loginToApp();
 
-        loginPage.switchToAdminTabPanel();
+//        loginPage.switchToAdminTabPanel();
 //        loginPage.addUser();
 //        loginPage.fillUserCreationFormAndSubmit();
-//        loginPage.switchToJobTitlesTab();
-//        loginPage.addJobTitle();
-//        loginPage.checkSuccessMessage();
-//        loginPage.deleteJobTitles();
-//        loginPage.addCandidateAndCheckCreation();
 //        loginPage.switchToAssignLeaveTab();
-//        loginPage.checkDashboardElements();
-//        loginPage.logoutFromApp();
 //        loginPage.openSalesProfile();
 
 //        Thread.sleep(5000);
     }
 
     @Test
-    @DisplayName("Check dashboard elements interaction")
+    @DisplayName("Check User creation")
     @Order(2)
-    void checkDashboardElements() {
-        loginPage.switchToDashboardTab();
-        loginPage.checkDashboardElements();
+    void checkUserCreation() throws InterruptedException {
+        loginPage.switchToAdminTabPanel();
+        loginPage.fillUserCreationFormAndSubmit();
     }
 
     @Test
-    @DisplayName("Check logout option")
+    @DisplayName("Check Job titles adding")
     @Order(3)
     void checkJobTitlesAdding() {
         loginPage.switchToAdminTabPanel();
@@ -51,18 +44,32 @@ public class FlowTest extends TestInit {
     }
 
     @Test
-    @DisplayName("Delete added job titles")
+    @DisplayName("Check job titles delete")
     @Order(4)
     void checkJobTitlesDeleting() {
-        loginPage.switchToAdminTabPanel();
-        loginPage.switchToJobTitlesTab();
         loginPage.deleteJobTitles();
     }
 
     @Test
-    @DisplayName("Check logout option")
+    @DisplayName("Check candidate adding")
     @Order(5)
-    void checkLogout() {
+    void checkCandidateAdding() {
+        loginPage.addCandidateAndCheckCreation();
+    }
+
+    @Test
+    @DisplayName("Check dashboard elements interaction")
+    @Order(6)
+    void checkDashboardElements() {
+        loginPage.switchToDashboardTab();
+        loginPage.checkDashboardElements();
+    }
+
+    @Test
+    @DisplayName("Check logout option")
+    @Order(8)
+    void checkLogout() throws InterruptedException {
         loginPage.logoutFromApp();
+        Thread.sleep(2000);
     }
 }

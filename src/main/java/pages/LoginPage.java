@@ -77,6 +77,7 @@ public class LoginPage {
     }
 
     public void fillUserCreationFormAndSubmit() throws InterruptedException {
+        addUser();
         inputEmployeeName();
         inputUserName();
         Thread.sleep(1000);
