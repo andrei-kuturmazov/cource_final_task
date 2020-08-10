@@ -2,10 +2,7 @@ package tests;
 
 
 import org.junit.jupiter.api.*;
-import pages.DashboardPage;
-import pages.JobTitlesPage;
-import pages.LeavePage;
-import pages.LoginPage;
+import pages.*;
 import utils.TestInit;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -15,6 +12,7 @@ public class FlowTest extends TestInit {
     LeavePage leavePage = new LeavePage();
     DashboardPage dashboardPage = new DashboardPage();
     JobTitlesPage jobTitlesPage = new JobTitlesPage();
+    RecruitmentPage recruitmentPage = new RecruitmentPage();
 
     @Test
     @DisplayName("Login test")
@@ -52,7 +50,7 @@ public class FlowTest extends TestInit {
     @DisplayName("Candidate adding test")
     @Order(5)
     void checkCandidateAdding() {
-        loginPage.addCandidateAndCheckCreation();
+        recruitmentPage.addCandidateAndCheckCreation();
     }
 
     @Test

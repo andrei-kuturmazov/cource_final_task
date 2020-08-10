@@ -1,6 +1,5 @@
 package pages;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import utils.Property;
@@ -20,13 +19,8 @@ public class LoginPage {
     private final SelenideElement employeeNameField = $x("//input[@id='systemUser_employeeName_empName']");
     private final SelenideElement userNameField = $x("//input[@id='systemUser_userName']");
     private final SelenideElement formSaveButton = $x("//input[@id='btnSave']");
-    private final SelenideElement recruitmentTabLink = $x("//a[@id='menu_recruitment_viewRecruitmentModule']");
-    private final SelenideElement candidateFirstNameField = $x("//input[@id='addCandidate_firstName']");
-    private final SelenideElement candidateLastNameField = $x("//input[@id='addCandidate_lastName']");
-    private final SelenideElement candidateEmail = $x("//input[@id='addCandidate_email']");
     private final SelenideElement userLink = $x("//a[@id='welcome']");
     private final SelenideElement logoutLink = $x("//a[contains(text(), 'Logout')]");
-    private final SelenideElement errorMessage = $x("//div[@class='message error']");
     private final SelenideElement pimTabLink = $x("//a[@id='menu_pim_viewPimModule']");
     private final SelenideElement salesProfile = $x("//td[contains(text(), 'Sales ')]/preceding-sibling::td[1]/a");
     private final SelenideElement successMessage = $x("//div[@class='fadable']");
@@ -79,22 +73,8 @@ public class LoginPage {
         logoutLink.click();
     }
 
-    public void addCandidate() {
-        recruitmentTabLink.click();
-        addButton.click();
-        candidateFirstNameField.sendKeys("Hello");
-        candidateLastNameField.sendKeys("World");
-        candidateEmail.sendKeys("hello-world@gmail.com");
-        formSaveButton.click();
-    }
-
     public void switchToPIMTab() {
         pimTabLink.click();
-    }
-
-    public void addCandidateAndCheckCreation() {
-        addCandidate();
-        errorMessage.shouldNotBe(Condition.visible);
     }
 
     public void openSalesProfile() {
