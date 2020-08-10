@@ -6,13 +6,14 @@ import pages.*;
 import utils.TestInit;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class FlowTest extends TestInit {
+public class OrangeHrTest extends TestInit {
 
     LoginPage loginPage = new LoginPage();
     LeavePage leavePage = new LeavePage();
     DashboardPage dashboardPage = new DashboardPage();
     JobTitlesPage jobTitlesPage = new JobTitlesPage();
     RecruitmentPage recruitmentPage = new RecruitmentPage();
+    UserAdministrationPage userAdministrationPage = new UserAdministrationPage();
 
     @Test
     @DisplayName("Login test")
@@ -27,7 +28,7 @@ public class FlowTest extends TestInit {
     @Order(2)
     void checkUserCreation() throws InterruptedException {
         loginPage.switchToAdminTabPanel();
-        loginPage.fillUserCreationFormAndSubmit();
+        userAdministrationPage.fillUserCreationFormAndSubmit();
     }
 
     @Test
@@ -60,6 +61,7 @@ public class FlowTest extends TestInit {
         dashboardPage.switchToDashboardTab();
         dashboardPage.checkDashboardElements();
     }
+
     @Test
     @DisplayName("Sales manager profile test")
     @Order(7)
