@@ -104,7 +104,6 @@ public class UserAdministrationPage {
         cancelButton.shouldBe(Condition.visible);
     }
 
-
     public void fillUserCreationFormAndSubmit() throws InterruptedException {
         addUser();
         fillUserForm();

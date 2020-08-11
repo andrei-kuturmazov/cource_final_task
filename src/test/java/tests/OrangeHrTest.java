@@ -77,6 +77,8 @@ public class OrangeHrTest extends TestInit {
     @Order(8)
     void checkAssignLeave() throws InterruptedException {
         leavePage.switchToAssignLeaveTab();
+        leavePage.checkFormValidationMessage();
+        leavePage.checkFormElements();
         leavePage.fillLeaveForm();
     }
 
