@@ -29,6 +29,8 @@ public class OrangeHrTest extends TestInit {
     @Order(2)
     void checkUserCreation() throws InterruptedException {
         loginPage.switchToAdminTabPanel();
+        userAdministrationPage.checkFormElements();
+        userAdministrationPage.checkValidationMessage();
         userAdministrationPage.fillUserCreationFormAndSubmit();
     }
 
