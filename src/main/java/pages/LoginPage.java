@@ -17,8 +17,6 @@ public class LoginPage {
     private final SelenideElement adminPanelButton = $x("//a[@id='menu_admin_viewAdminModule']");
     private final SelenideElement userLink = $x("//a[@id='welcome']");
     private final SelenideElement logoutLink = $x("//a[contains(text(), 'Logout')]");
-    private final SelenideElement pimTabLink = $x("//a[@id='menu_pim_viewPimModule']");
-    private final SelenideElement salesProfile = $x("//td[contains(text(), 'Sales ')]/preceding-sibling::td[1]/a");
 
     public void openLoginPage() {
         Selenide.open(baseUrl);
@@ -37,14 +35,5 @@ public class LoginPage {
     public void logoutFromApp() {
         userLink.click();
         logoutLink.click();
-    }
-
-    public void switchToPIMTab() {
-        pimTabLink.click();
-    }
-
-    public void openSalesProfile() {
-        switchToPIMTab();
-        salesProfile.click();
     }
 }

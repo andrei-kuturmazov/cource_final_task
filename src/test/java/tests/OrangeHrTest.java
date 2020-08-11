@@ -14,6 +14,7 @@ public class OrangeHrTest extends TestInit {
     JobTitlesPage jobTitlesPage = new JobTitlesPage();
     RecruitmentPage recruitmentPage = new RecruitmentPage();
     UserAdministrationPage userAdministrationPage = new UserAdministrationPage();
+    SalesPage salesPage = new SalesPage();
 
     @Test
     @DisplayName("Login test")
@@ -66,7 +67,7 @@ public class OrangeHrTest extends TestInit {
     @DisplayName("Sales manager profile test")
     @Order(7)
     void checkSalesProfile() {
-        loginPage.openSalesProfile();
+        salesPage.openSalesProfile();
     }
 
     @Test
