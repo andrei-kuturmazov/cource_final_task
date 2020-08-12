@@ -29,7 +29,7 @@
 gradlew clean test
 ```
 
-# Генерация и просмотр Allure report
+# Генерация и просмотр Allure отчета
 ```
 gradlew allureReport
 gradlew allureServe
