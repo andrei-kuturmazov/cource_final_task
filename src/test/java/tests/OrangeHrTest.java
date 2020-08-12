@@ -32,9 +32,10 @@ public class OrangeHrTest extends TestInit {
         userAdministrationPage.checkFormElements();
         userAdministrationPage.checkValidationMessage();
         userAdministrationPage.fillUserCreationFormAndSubmit();
+        Assertions.assertTrue(userAdministrationPage.checkSuccessMessage());
     }
 
-    @Test
+    /*@Test
     @DisplayName("Job titles adding test")
     @Order(3)
     void checkJobTitlesAdding() {
@@ -71,7 +72,7 @@ public class OrangeHrTest extends TestInit {
     void checkSalesProfile() {
         salesPage.openSalesProfile();
     }
-
+*/
     @Test
     @DisplayName("Assign leave form test")
     @Order(8)
@@ -80,6 +81,7 @@ public class OrangeHrTest extends TestInit {
         leavePage.checkFormValidationMessage();
         leavePage.checkFormElements();
         leavePage.fillLeaveForm();
+        Assertions.assertTrue(leavePage.checkSuccessMessagePresent());
     }
 
     @Test

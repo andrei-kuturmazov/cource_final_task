@@ -28,7 +28,7 @@ public class UserAdministrationPage {
     private final SelenideElement saveButton = $x("//input[@id='btnSave']");
     private final SelenideElement cancelButton = $x("//input[@id='btnCancel']");
     private final SelenideElement addButton = $x("//input[@id='btnAdd']");
-    private final SelenideElement successMessage = $x("//div[@class='fadable']");
+    private final SelenideElement successMessage = $x("//div[@class ='message success fadable']");
 
     @Step("Fill user creation form with correct data")
     public void fillUserForm() {
@@ -41,11 +41,6 @@ public class UserAdministrationPage {
         saveButton.click();
     }
 
-    @Step("Check successful user creation")
-    public void checkSuccessMessage() {
-        successMessage.isDisplayed();
-    }
-
     public void openUserForm() {
         addButton.click();
     }
@@ -53,8 +48,8 @@ public class UserAdministrationPage {
     @Step("Check validation message interaction for mandatory fields")
     public void checkValidationMessage() {
         saveButton.click();
-        employeeFieldValidationMessage.isDisplayed();
-        userNameFieldValidationMessage.isDisplayed();
+        employeeFieldValidationMessage.shouldBe(Condition.visible);
+        userNameFieldValidationMessage.shouldBe(Condition.visible);
     }
 
     @Step("Check user adding form specific elements")
@@ -109,6 +104,9 @@ public class UserAdministrationPage {
         fillUserForm();
         Thread.sleep(1000);
         submitCreationForm();
-        checkSuccessMessage();
+    }
+
+    public boolean checkSuccessMessage() {
+        return successMessage.waitUntil(Condition.visible, 1000).isDisplayed();
     }
 }

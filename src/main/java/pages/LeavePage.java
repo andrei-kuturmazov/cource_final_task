@@ -3,6 +3,7 @@ package pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import utils.Property;
 
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -31,6 +32,7 @@ public class LeavePage {
     private final SelenideElement commentField = $x("//textarea[@id='assignleave_txtComment']");
     private final SelenideElement assignButton = $x("//input[@id='assignBtn']");
     private final SelenideElement confirmButton = $x("//input[@id='confirmOkButton']");
+    private final SelenideElement successMessage = $x("//div[@class ='message success fadable']");
 
     public void switchToAssignLeaveTab() {
         leaveMenuTabLink.click();
@@ -40,6 +42,7 @@ public class LeavePage {
     public void submitForm() {
         assignButton.click();
     }
+
     public void confirmForm() {
         confirmButton.click();
     }
@@ -47,10 +50,10 @@ public class LeavePage {
     @Step("Check validation message interaction for mandatory fields")
     public void checkFormValidationMessage() {
         submitForm();
-        employeeFieldValidationMessage.isDisplayed();
-        leaveTypeValidationMessage.isDisplayed();
-        startDateValidationMessage.isDisplayed();
-        endDateValidationMessage.isDisplayed();
+        employeeFieldValidationMessage.shouldBe(Condition.visible);
+        leaveTypeValidationMessage.shouldBe(Condition.visible);
+        startDateValidationMessage.shouldBe(Condition.visible);
+        endDateValidationMessage.shouldBe(Condition.visible);
     }
 
     @Step("Check leave form main elements")
@@ -78,17 +81,19 @@ public class LeavePage {
         startDateLabel.shouldBe(Condition.visible);
         startDateLeaveCalendar.shouldBe(Condition.visible);
     }
+
     public void checkEndDateBlock() {
         endDateLabel.shouldBe(Condition.visible);
         endDateLeaveCalendar.shouldBe(Condition.visible);
     }
+
     public void checkCommentsBlock() {
         commentFieldLabel.shouldBe(Condition.visible);
         commentField.shouldBe(Condition.visible);
     }
 
     public void fillLeaveForm() throws InterruptedException {
-        employeeNameField.sendKeys("Linda Anderson");
+        employeeNameField.sendKeys(Property.getProperty("leaveUser"));
         leaveTypeDropdown.click();
         flmsLeaveOption.click();
         startDateLeaveCalendar.click();
@@ -98,5 +103,9 @@ public class LeavePage {
         Thread.sleep(1000);
         submitForm();
         confirmForm();
+    }
+
+    public boolean checkSuccessMessagePresent() {
+        return successMessage.isDisplayed();
     }
 }
