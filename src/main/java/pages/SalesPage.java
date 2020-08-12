@@ -8,6 +8,18 @@ public class SalesPage {
 
     private final SelenideElement pimTabLink = $x("//a[@id='menu_pim_viewPimModule']");
     private final SelenideElement salesProfile = $x("//td[contains(text(), 'Sales ')]/preceding-sibling::td[1]/a");
+    private final SelenideElement fullNameField = $x("//input[@id='personal_txtEmpFirstName']");
+    private final SelenideElement middleNameField = $x("//input[@id='personal_txtEmpMiddleName']");
+    private final SelenideElement lastNameField = $x("//input[@id='personal_txtEmpLastName']");
+    private final SelenideElement employeeIdField = $x("//input[@id='personal_txtEmployeeId']");
+    private final SelenideElement otherIdField = $x("//input[@id='personal_txtOtherID']");
+    private final SelenideElement driversLicenseField = $x("//input[@id='personal_txtLicenNo']");
+    private final SelenideElement driversLicenseExpireDateField = $x("//input[@id='personal_txtLicExpDate']");
+    private final SelenideElement martialStatusDropdown = $x("//select[@id='personal_cmbMarital']");
+    private final SelenideElement nationalityDropDown = $x("//select[@id='personal_cmbNation']");
+    private final SelenideElement dateOfBirth = $x("//input[@id='personal_DOB']");
+    private final SelenideElement editButton = $x("//input[@id='btnSave']");
+    private final SelenideElement addAttachmentButton = $x("//input[@id='btnAddAttachment']");
 
     public void switchToPIMTab() {
         pimTabLink.click();
@@ -16,5 +28,9 @@ public class SalesPage {
     public void openSalesProfile() {
         switchToPIMTab();
         salesProfile.click();
+    }
+
+    public void checkPersonalDetailsFormElements() {
+
     }
 }
