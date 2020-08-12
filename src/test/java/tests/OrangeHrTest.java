@@ -28,7 +28,7 @@ public class OrangeHrTest extends TestInit {
         });
     }
 
-    @Test
+   /* @Test
     @DisplayName("User creation test")
     @Order(2)
     void checkUserCreation() {
@@ -77,7 +77,7 @@ public class OrangeHrTest extends TestInit {
             dashboardPage.checkDashboardElements();
         });
     }
-
+*/
     @Test
     @DisplayName("Sales manager profile test")
     @Order(7)
@@ -85,8 +85,10 @@ public class OrangeHrTest extends TestInit {
         step("Switch to Sales manager profile", () -> salesPage.openSalesProfile());
 
         step("Switch to Sales manager personal profile fields", () -> salesPage.checkPersonalDetailsElements());
-    }
 
+        step("Get information about manager from profile", () -> salesPage.getSalesManagerPersonalInfo());
+    }
+/*
     @Test
     @DisplayName("Assign leave form test")
     @Order(8)
@@ -102,7 +104,7 @@ public class OrangeHrTest extends TestInit {
 
         step("Check success message interaction", () -> Assertions.assertTrue(leavePage.checkSuccessMessagePresent()));
     }
-
+*/
     @Test
     @DisplayName("Logout functionality test")
     @Order(9)

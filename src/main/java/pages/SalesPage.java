@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import utils.Log;
 
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -9,7 +10,7 @@ public class SalesPage {
 
     private final SelenideElement pimTabLink = $x("//a[@id='menu_pim_viewPimModule']");
     private final SelenideElement salesProfile = $x("//td[contains(text(), 'Sales ')]/preceding-sibling::td[1]/a");
-    private final SelenideElement fullNameField = $x("//input[@id='personal_txtEmpFirstName']");
+    private final SelenideElement firstNameField = $x("//input[@id='personal_txtEmpFirstName']");
     private final SelenideElement middleNameField = $x("//input[@id='personal_txtEmpMiddleName']");
     private final SelenideElement lastNameField = $x("//input[@id='personal_txtEmpLastName']");
     private final SelenideElement employeeIdField = $x("//input[@id='personal_txtEmployeeId']");
@@ -32,7 +33,7 @@ public class SalesPage {
     }
 
     public void checkPersonalDetailsElements() {
-        fullNameField.shouldBe(Condition.visible);
+        firstNameField.shouldBe(Condition.visible);
         middleNameField.shouldBe(Condition.visible);
         lastNameField.shouldBe(Condition.visible);
         employeeIdField.shouldBe(Condition.visible);
@@ -44,5 +45,18 @@ public class SalesPage {
         dateOfBirth.shouldBe(Condition.visible);
         editButton.shouldBe(Condition.visible);
         addAttachmentButton.shouldBe(Condition.visible);
+    }
+
+    public void getSalesManagerPersonalInfo() {
+        Log.info(String.format("\nSales manager info: \n" +
+                "First name: %s, \n" +
+                "Last name: %s, \n" +
+                "Middle name: %s, \n" +
+                "Employee id: %s \n" +
+                "Nationality: %s \n" +
+                "Date of birth: %s",
+                firstNameField.getValue(), lastNameField.getValue(),
+                middleNameField.getValue(), employeeIdField.getValue(),
+                nationalityDropDown.getValue(), dateOfBirth.getValue()));
     }
 }

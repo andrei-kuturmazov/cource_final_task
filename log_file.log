@@ -1,0 +1,29 @@
+2020-08-12 14:37:53 INFO  Log:26 - Sales manager info: 
+ First name: , 
+Last name: , 
+Middle name: , 
+Employee id:  
+Nationality: American 
+Date of birth: 
+2020-08-12 14:39:53 INFO  Log:26 - Sales manager info: 
+ First name: , 
+Last name: , 
+Middle name: , 
+Employee id:  
+Nationality: American 
+Date of birth: 
+2020-08-12 14:40:58 INFO  Log:26 - Sales manager info: 
+First name: Robert, 
+Last name: , 
+Middle name: , 
+Employee id:  
+Nationality: American 
+Date of birth: 
+2020-08-12 14:41:58 INFO  Log:26 - 
+Sales manager info: 
+First name: Robert, 
+Last name: Craig, 
+Middle name: , 
+Employee id: 0006 
+Nationality: 4 
+Date of birth: 1982-10-08
