@@ -1,5 +1,6 @@
 package pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$x;
@@ -30,7 +31,18 @@ public class SalesPage {
         salesProfile.click();
     }
 
-    public void checkPersonalDetailsFormElements() {
-
+    public void checkPersonalDetailsElements() {
+        fullNameField.shouldBe(Condition.visible);
+        middleNameField.shouldBe(Condition.visible);
+        lastNameField.shouldBe(Condition.visible);
+        employeeIdField.shouldBe(Condition.visible);
+        otherIdField.shouldBe(Condition.visible);
+        driversLicenseField.shouldBe(Condition.visible);
+        driversLicenseExpireDateField.shouldBe(Condition.visible);
+        martialStatusDropdown.shouldBe(Condition.visible);
+        nationalityDropDown.shouldBe(Condition.visible);
+        dateOfBirth.shouldBe(Condition.visible);
+        editButton.shouldBe(Condition.visible);
+        addAttachmentButton.shouldBe(Condition.visible);
     }
 }

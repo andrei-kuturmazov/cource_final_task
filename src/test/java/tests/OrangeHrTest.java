@@ -82,13 +82,15 @@ public class OrangeHrTest extends TestInit {
     @DisplayName("Sales manager profile test")
     @Order(7)
     void checkSalesProfile() {
-        step("Check Sales manager profile", () -> salesPage.openSalesProfile());
+        step("Switch to Sales manager profile", () -> salesPage.openSalesProfile());
+
+        step("Switch to Sales manager personal profile fields", () -> salesPage.checkPersonalDetailsElements());
     }
 
     @Test
     @DisplayName("Assign leave form test")
     @Order(8)
-    void checkAssignLeave() throws InterruptedException {
+    void checkAssignLeave() {
         step("Check Assign Leave Form message", () -> {
             leavePage.switchToAssignLeaveTab();
             leavePage.checkFormValidationMessage();
