@@ -73,7 +73,7 @@ public class OrangeHrTest extends TestInit {
     }
 
     @Test
-    @DisplayName("assign leave form test")
+    @DisplayName("Assign leave form test")
     @Order(8)
     void checkAssignLeave() throws InterruptedException {
         leavePage.switchToAssignLeaveTab();
@@ -83,7 +83,7 @@ public class OrangeHrTest extends TestInit {
     }
 
     @Test
-    @DisplayName("logout functionality test")
+    @DisplayName("Logout functionality test")
     @Order(9)
     void checkLogout() {
         loginPage.logoutFromApp();

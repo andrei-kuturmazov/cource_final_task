@@ -27,7 +27,7 @@ public class UserAdministrationPage {
     private final SelenideElement confirmPasswordField = $x("//input[@id='systemUser_confirmPassword']");
     private final SelenideElement saveButton = $x("//input[@id='btnSave']");
     private final SelenideElement cancelButton = $x("//input[@id='btnCancel']");
-    private final SelenideElement addButton = $x("//div[@class='top']/input[@type='button']");
+    private final SelenideElement addButton = $x("//input[@id='btnAdd']");
     private final SelenideElement successMessage = $x("//div[@class='fadable']");
 
     @Step("Fill user creation form with correct data")
@@ -46,7 +46,7 @@ public class UserAdministrationPage {
         successMessage.isDisplayed();
     }
 
-    public void addUser() {
+    public void openUserForm() {
         addButton.click();
     }
 
@@ -59,6 +59,7 @@ public class UserAdministrationPage {
 
     @Step("Check user adding form specific elements")
     public void checkFormElements() {
+        openUserForm();
         formHeader.shouldBe(Condition.visible);
         checkUserRoleBlock();
         checkEmployeeNameBlock();
@@ -105,7 +106,6 @@ public class UserAdministrationPage {
     }
 
     public void fillUserCreationFormAndSubmit() throws InterruptedException {
-        addUser();
         fillUserForm();
         Thread.sleep(1000);
         submitCreationForm();
