@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import utils.Property;
 
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -18,9 +19,9 @@ public class RecruitmentPage {
     public void addCandidate() {
         recruitmentTabLink.click();
         addButton.click();
-        candidateFirstNameField.sendKeys("Hello");
-        candidateLastNameField.sendKeys("World");
-        candidateEmail.sendKeys("hello-world@gmail.com");
+        candidateFirstNameField.sendKeys(Property.getProperty("candidateFirstName"));
+        candidateLastNameField.sendKeys(Property.getProperty("candidateLastName"));
+        candidateEmail.sendKeys(Property.getProperty("candidateEmail"));
         formSaveButton.click();
     }
 
