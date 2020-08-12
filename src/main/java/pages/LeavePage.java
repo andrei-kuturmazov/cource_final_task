@@ -47,7 +47,6 @@ public class LeavePage {
         confirmButton.click();
     }
 
-    @Step("Check validation message interaction for mandatory fields")
     public void checkFormValidationMessage() {
         submitForm();
         employeeFieldValidationMessage.shouldBe(Condition.visible);
@@ -56,7 +55,6 @@ public class LeavePage {
         endDateValidationMessage.shouldBe(Condition.visible);
     }
 
-    @Step("Check leave form main elements")
     public void checkFormElements() {
         assignLeaveLabel.shouldBe(Condition.visible);
         leaveBalanceLabel.shouldBe(Condition.visible);

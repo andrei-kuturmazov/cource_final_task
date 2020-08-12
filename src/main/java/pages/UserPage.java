@@ -7,7 +7,7 @@ import utils.Property;
 
 import static com.codeborne.selenide.Selenide.$x;
 
-public class UserAdministrationPage {
+public class UserPage {
 
     private final SelenideElement formHeader = $x("//h1[@id='UserHeading']");
     private final SelenideElement userRoleLabel = $x("//label[contains(text(), 'User Role')]");
@@ -30,13 +30,11 @@ public class UserAdministrationPage {
     private final SelenideElement addButton = $x("//input[@id='btnAdd']");
     private final SelenideElement successMessage = $x("//div[@class ='message success fadable']");
 
-    @Step("Fill user creation form with correct data")
     public void fillUserForm() {
         employeeField.sendKeys(Property.getProperty("employeeName"));
         userNameField.sendKeys(Property.getProperty("userName"));
     }
 
-    @Step("Submit new user creation")
     public void submitCreationForm() {
         saveButton.click();
     }
@@ -45,14 +43,12 @@ public class UserAdministrationPage {
         addButton.click();
     }
 
-    @Step("Check validation message interaction for mandatory fields")
     public void checkValidationMessage() {
         saveButton.click();
         employeeFieldValidationMessage.shouldBe(Condition.visible);
         userNameFieldValidationMessage.shouldBe(Condition.visible);
     }
 
-    @Step("Check user adding form specific elements")
     public void checkFormElements() {
         openUserForm();
         formHeader.shouldBe(Condition.visible);
