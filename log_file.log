@@ -117,3 +117,21 @@ Employee id: 0006
 Employee gender: Male 
 Nationality: American 
 Date of birth: 1982-10-08
+2020-08-13 13:33:16 INFO  Log:26 - 
+Sales manager info: 
+First name: Robert, 
+Last name: Craig, 
+Middle name: , 
+Employee id: 0006 
+Employee gender: Male 
+Nationality: American 
+Date of birth: 1982-10-08
+2020-08-13 13:48:55 INFO  Log:26 - 
+Sales manager info: 
+First name: Robert, 
+Last name: Craig, 
+Middle name: , 
+Employee id: 0006 
+Employee gender: Male 
+Nationality: American 
+Date of birth: 1982-10-08

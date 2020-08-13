@@ -79,8 +79,8 @@ public class OrangeHrTest extends TestInit {
     @Order(7)
     void checkSalesProfile() {
         step("Switch to Sales manager profile", () -> salesPage.openSalesProfile());
-        step("Check Sales manager personal profile fields", () -> salesPage.checkPersonalDetailsElements());
-        step("Log information about manager from profile", () -> salesPage.getSalesManagerPersonalInfo());
+        step("Check Sales manager personal profile fields", () -> salesPage.checkPersonalDetailsFormElements());
+        step("Log information about manager from profile", () -> salesPage.checkSalesManagerPersonalInfo());
     }
 
     @Test

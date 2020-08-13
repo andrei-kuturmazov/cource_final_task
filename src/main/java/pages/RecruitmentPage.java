@@ -27,6 +27,6 @@ public class RecruitmentPage {
 
     public void addCandidateAndCheckCreation() {
         addCandidate();
-        errorMessage.shouldNotBe(Condition.visible);
+        errorMessage.shouldBe(Condition.visible);
     }
 }

@@ -1,6 +1,6 @@
 # Тестирование ресурса opensource-demo.orangehrmlive.com
 ```
-Реализация тестов с использованием: Gradle, JUnit5, Selenide, Log4j, Allure
+Реализация тестов с использованием: Gradle, JUnit5, Selenide, Allure, Log4j
 ```
 # Автор
 [Andrei Kuturmazov](https://github.com/andrei-kuturmazov)
