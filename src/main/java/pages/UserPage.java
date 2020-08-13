@@ -37,6 +37,8 @@ public class UserPage {
     public void fillUserForm() {
         employeeField.sendKeys(String.format("%s %s", Property.getProperty("employeeName"), Property.getProperty("employeeLastName")));
         userNameField.sendKeys(Property.getProperty("userName"));
+        passwordField.sendKeys(Property.getProperty("userPassword"));
+        confirmPasswordField.sendKeys(Property.getProperty("userPassword"));
     }
 
     public void submitCreationForm() {

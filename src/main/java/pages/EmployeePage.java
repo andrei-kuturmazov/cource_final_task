@@ -12,9 +12,12 @@ public class EmployeePage {
     private final SelenideElement addEmployeeButton = $x("//input[@id='btnAdd']");
     private final SelenideElement firstNameField = $x("//input[@id='firstName']");
     private final SelenideElement lastNameField = $x("//input[@id='lastName']");
-    private final SelenideElement saveUserButton = $x("//input[@id='btnSave']");
+    private final SelenideElement saveButton = $x("//input[@id='btnSave']");
     private final SelenideElement employeeIdField = $x("//input[@id='employeeId']");
     private final SelenideElement idHeader = $x("//a[contains(text(), 'Id')]");
+    private final SelenideElement jobLink = $x("//ul[@id='sidenav']/li/a[contains(text(), 'Job')]");
+    private final SelenideElement jobTitle = $x("//select[@id='job_job_title']");
+    private final SelenideElement salesManagerOption = $x("//option[contains(text(), 'Sales Manager')]");
     private final SelenideElement deleteButton = $x("//input[@id='btnDelete']");
     private final SelenideElement dialogConfirmButton = $x("//input[@id='dialogDeleteBtn']");
     private final SelenideElement successMessage = $x("//div[@class ='message success fadable']");
@@ -26,17 +29,26 @@ public class EmployeePage {
         employeeTabLink.click();
     }
 
+    public void createSalesManagerEmployee() {
+        switchToEmployeeList();
+        fillEmployeeForm();
+        addingSalesManagerJob();
+    }
+
     public void fillEmployeeForm() {
         addEmployeeButton.click();
         firstNameField.sendKeys(Property.getProperty("employeeName"));
         lastNameField.sendKeys(Property.getProperty("employeeLastName"));
         employeeId = employeeIdField.getText();
-        saveUserButton.click();
+        saveButton.click();
     }
 
-    public void createTestEmployee() {
-        switchToEmployeeList();
-        fillEmployeeForm();
+    public void addingSalesManagerJob() {
+        jobLink.click();
+        saveButton.click();
+        jobTitle.click();
+        salesManagerOption.click();
+        saveButton.click();
     }
 
     public void sortEmployeeIdByDescending() {

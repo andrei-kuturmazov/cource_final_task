@@ -27,7 +27,7 @@ public class OrangeHrTest extends TestInit {
             loginPage.openLoginPage();
             loginPage.loginToApp();
         });
-        step("Create test employee", () -> employeePage.createTestEmployee());
+        step("Create test employee", () -> employeePage.createSalesManagerEmployee());
     }
 
     @Test
