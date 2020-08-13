@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import utils.Property;
 
 import static com.codeborne.selenide.Selenide.$x;
@@ -16,6 +17,7 @@ public class RecruitmentPage {
     private final SelenideElement formSaveButton = $x("//input[@id='btnSave']");
     private final SelenideElement addButton = $x("//div[@class='top']/input[@type='button']");
 
+    @Step("Add new candidate")
     public void addCandidate() {
         recruitmentTabLink.click();
         addButton.click();
@@ -25,8 +27,14 @@ public class RecruitmentPage {
         formSaveButton.click();
     }
 
+    @Step("Add candidate and check candidate creation")
     public void addCandidateAndCheckCreation() {
         addCandidate();
+        checkErrorMessageInteraction();
+    }
+
+    @Step("Check error message interaction")
+    public void checkErrorMessageInteraction() {
         errorMessage.shouldBe(Condition.visible);
     }
 }

@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import utils.Property;
 
 import static com.codeborne.selenide.Selenide.$x;
@@ -33,30 +34,39 @@ public class LeavePage {
     private final SelenideElement confirmButton = $x("//input[@id='confirmOkButton']");
     private final SelenideElement successMessage = $x("//div[@class ='message success fadable']");
 
+    @Step("Switch to Assign Leave Tab")
     public void switchToAssignLeaveTab() {
         leaveMenuTabLink.click();
         assignLeaveLink.click();
     }
 
+    @Step("Submit Leave form")
     public void submitForm() {
         assignButton.click();
     }
 
+    @Step("Confirm form adding")
     public void confirmForm() {
         confirmButton.click();
     }
 
+    @Step("Check form mandatory fields and validation message interaction")
     public void checkFormValidationMessage() {
         submitForm();
+        checkValidationMessageInteraction();
+    }
+
+    @Step("Check validation message interaction")
+    public void checkValidationMessageInteraction() {
         employeeFieldValidationMessage.shouldBe(Condition.visible);
         leaveTypeValidationMessage.shouldBe(Condition.visible);
         startDateValidationMessage.shouldBe(Condition.visible);
         endDateValidationMessage.shouldBe(Condition.visible);
     }
 
+    @Step("Check form fields interaction")
     public void checkFormElements() {
-        assignLeaveLabel.shouldBe(Condition.visible);
-        leaveBalanceLabel.shouldBe(Condition.visible);
+        checkFormLabelsInteraction();
         checkEmployeeFieldBlock();
         checkLeaveTypeBlock();
         checkStartDateBlock();
@@ -64,32 +74,52 @@ public class LeavePage {
         checkCommentsBlock();
     }
 
+    @Step("Check Form labels interaction")
+    public void checkFormLabelsInteraction() {
+        assignLeaveLabel.shouldBe(Condition.visible);
+        leaveBalanceLabel.shouldBe(Condition.visible);
+    }
+
+    @Step("Check Employee block information")
     public void checkEmployeeFieldBlock() {
         employeeNameLabel.shouldBe(Condition.visible);
         employeeNameField.shouldBe(Condition.visible);
     }
 
+    @Step("Check Leave Type information")
     public void checkLeaveTypeBlock() {
         leaveTypeLabel.shouldBe(Condition.visible);
         leaveTypeDropdown.shouldBe(Condition.visible);
     }
 
+    @Step("Check Start Date Block")
     public void checkStartDateBlock() {
         startDateLabel.shouldBe(Condition.visible);
         startDateLeaveCalendar.shouldBe(Condition.visible);
     }
 
+    @Step("Check End Date Block")
     public void checkEndDateBlock() {
         endDateLabel.shouldBe(Condition.visible);
         endDateLeaveCalendar.shouldBe(Condition.visible);
     }
 
+    @Step("Check Comments Block")
     public void checkCommentsBlock() {
         commentFieldLabel.shouldBe(Condition.visible);
         commentField.shouldBe(Condition.visible);
     }
 
-    public void fillLeaveForm() throws InterruptedException {
+    @Step("Fill and submit Leave form")
+    public void createLeaveRequest() throws InterruptedException {
+        fillLeaveForm();
+        Thread.sleep(1000);
+        submitForm();
+        confirmForm();
+    }
+
+    @Step("Fill leave form")
+    public void fillLeaveForm() {
         employeeNameField.sendKeys(String.format("%s %s", Property.getProperty("employeeName"), Property.getProperty("employeeLastName")));
         leaveTypeDropdown.click();
         flmsLeaveOption.click();
@@ -97,11 +127,9 @@ public class LeavePage {
         firstDateOfMonth.click();
         endDateLeaveCalendar.click();
         fifthDateOfMonth.click();
-        Thread.sleep(1000);
-        submitForm();
-        confirmForm();
     }
 
+    @Step("Check success message interaction")
     public boolean checkSuccessMessage() {
         return successMessage.isDisplayed();
     }

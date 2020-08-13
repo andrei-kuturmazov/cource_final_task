@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import utils.Property;
 
 
@@ -17,16 +18,19 @@ public class LoginPage {
     private final SelenideElement userLink = $x("//a[@id='welcome']");
     private final SelenideElement logoutLink = $x("//a[contains(text(), 'Logout')]");
 
+    @Step("Open login page")
     public void openLoginPage() {
         Selenide.open(baseUrl);
     }
 
+    @Step("Login to app as administrator")
     public void loginToApp() {
         loginField.sendKeys(Property.getProperty("login"));
         passwordField.sendKeys(Property.getProperty("password"));
         loginButton.click();
     }
 
+    @Step("Logout from application")
     public void logoutFromApp() {
         userLink.click();
         logoutLink.click();

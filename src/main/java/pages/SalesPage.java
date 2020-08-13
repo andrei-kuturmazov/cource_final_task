@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
 import utils.Property;
 
@@ -24,21 +25,30 @@ public class SalesPage {
     private final SelenideElement addAttachmentButton = $x("//input[@id='btnAddAttachment']");
     private final SelenideElement idHeader = $x("//a[contains(text(), 'Id')]");
 
+    @Step("Switch to employee tab")
     public void switchToPIMTab() {
         pimTabLink.click();
     }
 
+    @Step("Open test Sales manager profile")
     public void openSalesProfile() {
         switchToPIMTab();
         sortEmployeeIdByDescending();
+        selectEmployeeProfile();
+    }
+
+    @Step("Select Test Employee profile")
+    public void selectEmployeeProfile() {
         $x(String.format("//a[contains(text(), %s)]", EmployeePage.employeeId)).click();
     }
 
+    @Step("Sort employees by descending")
     public void sortEmployeeIdByDescending() {
         idHeader.click();
         idHeader.click();
     }
 
+    @Step("Check personal details form elements")
     public void checkPersonalDetailsFormElements() {
         firstNameField.shouldBe(Condition.visible);
         middleNameField.shouldBe(Condition.visible);
@@ -54,6 +64,7 @@ public class SalesPage {
         addAttachmentButton.shouldBe(Condition.visible);
     }
 
+    @Step("Check test Sales manager personal data")
     public void checkSalesManagerPersonalInfo() {
         Assertions.assertEquals(firstNameField.getValue(), Property.getProperty("employeeName"));
         Assertions.assertEquals(lastNameField.getValue(), Property.getProperty("employeeLastName"));

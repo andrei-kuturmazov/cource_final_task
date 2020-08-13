@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,30 +21,59 @@ public class JobTitlesPage {
     private final SelenideElement deleteButton = $x("//input[@id='btnDelete']");
     private final SelenideElement deleteConfirmationButton = $x("//input[@id='dialogDeleteBtn']");
 
+    @Step("Add button click")
+    public void addButtonClick() {
+        addButton.click();
+    }
+
+    @Step("Form save button click")
+    public void formSaveButtonClick() {
+        formSaveButton.click();
+    }
+
+    @Step("Input Job title name")
+    public void inputJobTitle(String item) {
+        jobTitleField.sendKeys(item);
+    }
+
+    @Step("Switch to job titles tab")
     public void switchToJobTitlesTab() {
         jobDropdown.hover();
         jobTitlesLink.click();
     }
 
+    @Step("Add List of new job titles")
     public void addJobTitle() {
         for (String item : jobTitles) {
-            addButton.click();
-            jobTitleField.sendKeys(item);
-            formSaveButton.click();
+            addButtonClick();
+            inputJobTitle(item);
+            formSaveButtonClick();
             checkSuccessMessage();
         }
     }
 
+    @Step("Select Test Job Titles")
+    public void selectTestItem(String xPath) {
+        $x(xPath).click();
+    }
+
+    @Step("Delete and confirm ")
+    public void confirmJobTitleDeleting() {
+        deleteButton.click();
+        deleteConfirmationButton.click();
+    }
+
+    @Step("Delete created job titles")
     public void deleteJobTitles() {
         for (String item : jobTitles) {
             String xPath = String.format("//a[contains(text(), '%s')]/parent::td/preceding-sibling::td", item);
-            $x(xPath).click();
+            selectTestItem(xPath);
         }
-        deleteButton.click();
-        deleteConfirmationButton.click();
+        confirmJobTitleDeleting();
         checkSuccessMessage();
     }
 
+    @Step("Check success message interaction")
     public void checkSuccessMessage() {
         successMessage.isDisplayed();
     }

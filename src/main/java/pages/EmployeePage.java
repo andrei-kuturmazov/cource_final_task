@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import utils.Property;
 
 import static com.codeborne.selenide.Selenide.$x;
@@ -23,17 +24,20 @@ public class EmployeePage {
     private final SelenideElement successMessage = $x("//div[@class ='message success fadable']");
     public static String employeeId;
 
+    @Step("Switch to Employee list Tab")
     public void switchToEmployeeList() {
         pimTabLink.click();
         employeeTabLink.click();
     }
 
+    @Step("Create employee with Sales Manager job")
     public void createSalesManagerEmployee() {
         switchToEmployeeList();
         fillEmployeeForm();
         addingSalesManagerJob();
     }
 
+    @Step("Fill Employee form with data")
     public void fillEmployeeForm() {
         addEmployeeButton.click();
         firstNameField.sendKeys(Property.getProperty("employeeName"));
@@ -42,6 +46,7 @@ public class EmployeePage {
         saveButton.click();
     }
 
+    @Step("Add Sales Manager job vacancy")
     public void addingSalesManagerJob() {
         jobLink.click();
         saveButton.click();
@@ -50,23 +55,27 @@ public class EmployeePage {
         saveButton.click();
     }
 
+    @Step("Sort employees list by descending")
     public void sortEmployeeIdByDescending() {
         idHeader.click();
         idHeader.click();
     }
 
+    @Step("Confirm employee deleting")
     public void confirmEmployeeDeleting() {
         $x(String.format("//a[contains(text(), %s)]/parent::td/preceding-sibling::td", employeeId)).click();
         deleteButton.click();
         dialogConfirmButton.click();
     }
 
+    @Step("Delete test employee")
     public void deleteEmployee() {
         switchToEmployeeList();
         sortEmployeeIdByDescending();
         confirmEmployeeDeleting();
     }
 
+    @Step("Check success message interaction")
     public boolean checkSuccessMessage() {
         return successMessage.isDisplayed();
     }
