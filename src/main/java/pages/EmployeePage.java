@@ -21,8 +21,7 @@ public class EmployeePage {
     private final SelenideElement deleteButton = $x("//input[@id='btnDelete']");
     private final SelenideElement dialogConfirmButton = $x("//input[@id='dialogDeleteBtn']");
     private final SelenideElement successMessage = $x("//div[@class ='message success fadable']");
-    private String employeeId;
-    private String employeeSelectCheckbox = String.format("//a[contains(text(), %s )]/parent::td/preceding-sibling::td", employeeId);
+    private static String employeeId;
 
     public void switchToEmployeeList() {
         pimTabLink.click();
@@ -39,7 +38,7 @@ public class EmployeePage {
         addEmployeeButton.click();
         firstNameField.sendKeys(Property.getProperty("employeeName"));
         lastNameField.sendKeys(Property.getProperty("employeeLastName"));
-        employeeId = employeeIdField.getText();
+        employeeId = employeeIdField.getValue();
         saveButton.click();
     }
 
@@ -57,7 +56,7 @@ public class EmployeePage {
     }
 
     public void confirmEmployeeDeleting() {
-        $x(employeeSelectCheckbox).click();
+        $x(String.format("//a[contains(text(), %s )]/parent::td/preceding-sibling::td", employeeId)).click();
         deleteButton.click();
         dialogConfirmButton.click();
     }
