@@ -27,3 +27,39 @@ Middle name: ,
 Employee id: 0006 
 Nationality: 4 
 Date of birth: 1982-10-08
+2020-08-13 09:11:49 INFO  Log:26 - 
+Sales manager info: 
+First name: Robert, 
+Last name: Craig, 
+Middle name: , 
+Employee id: 0006 
+Employee gender: null 
+Nationality: 4 
+Date of birth: 1982-10-08
+2020-08-13 09:17:24 INFO  Log:26 - 
+Sales manager info: 
+First name: Robert, 
+Last name: Craig, 
+Middle name: , 
+Employee id: 0006 
+Employee gender: null 
+Nationality: 4 
+Date of birth: 1982-10-08
+2020-08-13 09:18:06 INFO  Log:26 - 
+Sales manager info: 
+First name: Robert, 
+Last name: Craig, 
+Middle name: , 
+Employee id: 0006 
+Employee gender: Male 
+Nationality: 4 
+Date of birth: 1982-10-08
+2020-08-13 09:19:02 INFO  Log:26 - 
+Sales manager info: 
+First name: Robert, 
+Last name: Craig, 
+Middle name: , 
+Employee id: 0006 
+Employee gender: Male 
+Nationality: American 
+Date of birth: 1982-10-08
