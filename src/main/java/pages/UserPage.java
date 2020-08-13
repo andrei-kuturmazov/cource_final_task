@@ -8,6 +8,7 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class UserPage {
 
+    private final SelenideElement adminPanelButton = $x("//a[@id='menu_admin_viewAdminModule']");
     private final SelenideElement formHeader = $x("//h1[@id='UserHeading']");
     private final SelenideElement userRoleLabel = $x("//label[contains(text(), 'User Role')]");
     private final SelenideElement userRoleDropDown = $x("//select[@id='systemUser_userType']");
@@ -29,8 +30,12 @@ public class UserPage {
     private final SelenideElement addButton = $x("//input[@id='btnAdd']");
     private final SelenideElement successMessage = $x("//div[@class ='message success fadable']");
 
+    public void switchToAdminTabPanel() {
+        adminPanelButton.click();
+    }
+
     public void fillUserForm() {
-        employeeField.sendKeys(Property.getProperty("employeeName"));
+        employeeField.sendKeys(String.format("%s %s", Property.getProperty("employeeName"), Property.getProperty("employeeLastName")));
         userNameField.sendKeys(Property.getProperty("userName"));
     }
 
@@ -90,6 +95,7 @@ public class UserPage {
         confirmPasswordLabel.shouldBe(Condition.visible);
         confirmPasswordField.shouldBe(Condition.visible);
     }
+
     public void checkButtonsBlock() {
         saveButton.shouldBe(Condition.visible);
         cancelButton.shouldBe(Condition.visible);

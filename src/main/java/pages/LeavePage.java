@@ -90,7 +90,7 @@ public class LeavePage {
     }
 
     public void fillLeaveForm() throws InterruptedException {
-        employeeNameField.sendKeys(Property.getProperty("leaveUser"));
+        employeeNameField.sendKeys(String.format("%s %s", Property.getProperty("employeeName"), Property.getProperty("employeeLastName")));
         leaveTypeDropdown.click();
         flmsLeaveOption.click();
         startDateLeaveCalendar.click();
@@ -102,7 +102,7 @@ public class LeavePage {
         confirmForm();
     }
 
-    public boolean checkSuccessMessagePresent() {
+    public boolean checkSuccessMessage() {
         return successMessage.isDisplayed();
     }
 }

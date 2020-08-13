@@ -14,7 +14,6 @@ public class LoginPage {
     private final SelenideElement loginField = $x("//input[@id='txtUsername']");
     private final SelenideElement passwordField = $x("//input[@id='txtPassword']");
     private final SelenideElement loginButton = $x("//input[@id='btnLogin']");
-    private final SelenideElement adminPanelButton = $x("//a[@id='menu_admin_viewAdminModule']");
     private final SelenideElement userLink = $x("//a[@id='welcome']");
     private final SelenideElement logoutLink = $x("//a[contains(text(), 'Logout')]");
 
@@ -26,10 +25,6 @@ public class LoginPage {
         loginField.sendKeys(Property.getProperty("login"));
         passwordField.sendKeys(Property.getProperty("password"));
         loginButton.click();
-    }
-
-    public void switchToAdminTabPanel() {
-        adminPanelButton.click();
     }
 
     public void logoutFromApp() {

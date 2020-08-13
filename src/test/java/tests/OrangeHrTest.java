@@ -17,6 +17,7 @@ public class OrangeHrTest extends TestInit {
     RecruitmentPage recruitmentPage = new RecruitmentPage();
     UserPage userPage = new UserPage();
     SalesPage salesPage = new SalesPage();
+    EmployeePage employeePage = new EmployeePage();
 
     @Test
     @DisplayName("Login test")
@@ -26,20 +27,17 @@ public class OrangeHrTest extends TestInit {
             loginPage.openLoginPage();
             loginPage.loginToApp();
         });
+        step("Create test employee", () -> employeePage.createTestEmployee());
     }
 
     @Test
     @DisplayName("User creation test")
     @Order(2)
     void checkUserCreation() {
-        step("Switch to user administration tab", () -> loginPage.switchToAdminTabPanel());
-
+        step("Switch to user administration tab", () -> userPage.switchToAdminTabPanel());
         step("Check form header and fields", () -> userPage.checkFormElements());
-
         step("Check validation message interaction", () -> userPage.checkValidationMessage());
-
         step("Fill users form with valid data and submit", () -> userPage.fillUserCreationFormAndSubmit());
-
         step("Check success message interaction", () -> Assertions.assertTrue(userPage.checkSuccessMessage()));
     }
 
@@ -47,10 +45,8 @@ public class OrangeHrTest extends TestInit {
     @DisplayName("Job titles adding test")
     @Order(3)
     void checkJobTitlesAdding() {
-        step("Switch to user administration tab", () -> loginPage.switchToAdminTabPanel());
-
+        step("Switch to user administration tab", () -> userPage.switchToAdminTabPanel());
         step("Switch to job titles tab", () -> jobTitlesPage.switchToJobTitlesTab());
-
         step("Add new job titles", () -> jobTitlesPage.addJobTitle());
     }
 
@@ -83,10 +79,8 @@ public class OrangeHrTest extends TestInit {
     @Order(7)
     void checkSalesProfile() {
         step("Switch to Sales manager profile", () -> salesPage.openSalesProfile());
-
-        step("Switch to Sales manager personal profile fields", () -> salesPage.checkPersonalDetailsElements());
-
-        step("Get information about manager from profile", () -> salesPage.getSalesManagerPersonalInfo());
+        step("Check Sales manager personal profile fields", () -> salesPage.checkPersonalDetailsElements());
+        step("Log information about manager from profile", () -> salesPage.getSalesManagerPersonalInfo());
     }
 
     @Test
@@ -99,16 +93,18 @@ public class OrangeHrTest extends TestInit {
         });
 
         step("Check Form elements", () -> leavePage.checkFormElements());
-
         step("Fill form with data", () -> leavePage.fillLeaveForm());
-
-        step("Check success message interaction", () -> Assertions.assertTrue(leavePage.checkSuccessMessagePresent()));
+        step("Check success message interaction", () -> Assertions.assertTrue(leavePage.checkSuccessMessage()));
     }
 
     @Test
     @DisplayName("Logout functionality test")
     @Order(9)
     void checkLogout() {
+        step("Delete created test employee and test user", ()-> {
+            employeePage.deleteEmployee();
+            Assertions.assertTrue(employeePage.checkSuccessMessage());
+        });
         step("Check logout functionality", () -> loginPage.logoutFromApp());
     }
 }
