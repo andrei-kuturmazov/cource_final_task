@@ -34,6 +34,8 @@ public class LeavePage {
     private final SelenideElement confirmButton = $x("//input[@id='confirmOkButton']");
     private final SelenideElement successMessage = $x("//div[@class ='message success fadable']");
 
+    /* Steps */
+
     @Step("Switch to Assign Leave Tab")
     public void switchToAssignLeaveTab() {
         leaveMenuTabLink.click();

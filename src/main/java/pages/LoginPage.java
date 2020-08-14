@@ -18,12 +18,14 @@ public class LoginPage {
     private final SelenideElement userLink = $x("//a[@id='welcome']");
     private final SelenideElement logoutLink = $x("//a[contains(text(), 'Logout')]");
 
+    /* Steps */
+
     @Step("Open login page")
     public void openLoginPage() {
         Selenide.open(baseUrl);
     }
 
-    @Step("Login to app as administrator")
+    @Step("Login as administrator")
     public void loginToApp() {
         loginField.sendKeys(Property.getProperty("login"));
         passwordField.sendKeys(Property.getProperty("password"));

@@ -17,6 +17,8 @@ public class RecruitmentPage {
     private final SelenideElement formSaveButton = $x("//input[@id='btnSave']");
     private final SelenideElement addButton = $x("//div[@class='top']/input[@type='button']");
 
+    /* Steps */
+
     @Step("Add new candidate")
     public void addCandidate() {
         recruitmentTabLink.click();

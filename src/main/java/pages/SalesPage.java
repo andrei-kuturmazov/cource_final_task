@@ -25,12 +25,14 @@ public class SalesPage {
     private final SelenideElement addAttachmentButton = $x("//input[@id='btnAddAttachment']");
     private final SelenideElement idHeader = $x("//a[contains(text(), 'Id')]");
 
+    /* Steps */
+
     @Step("Switch to employee tab")
     public void switchToPIMTab() {
         pimTabLink.click();
     }
 
-    @Step("Open test Sales manager profile")
+    @Step("Open test Sales Manager profile")
     public void openSalesProfile() {
         switchToPIMTab();
         sortEmployeeIdByDescending();

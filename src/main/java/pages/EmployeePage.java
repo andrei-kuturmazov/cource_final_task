@@ -24,13 +24,15 @@ public class EmployeePage {
     private final SelenideElement successMessage = $x("//div[@class ='message success fadable']");
     public static String employeeId;
 
+    /* Steps */
+
     @Step("Switch to Employee list Tab")
     public void switchToEmployeeList() {
         pimTabLink.click();
         employeeTabLink.click();
     }
 
-    @Step("Create employee with Sales Manager job")
+    @Step("Create Sales Manager test employee")
     public void createSalesManagerEmployee() {
         switchToEmployeeList();
         fillEmployeeForm();
@@ -61,18 +63,18 @@ public class EmployeePage {
         idHeader.click();
     }
 
-    @Step("Confirm employee deleting")
-    public void confirmEmployeeDeleting() {
-        $x(String.format("//a[contains(text(), %s)]/parent::td/preceding-sibling::td", employeeId)).click();
-        deleteButton.click();
-        dialogConfirmButton.click();
-    }
-
     @Step("Delete test employee")
     public void deleteEmployee() {
         switchToEmployeeList();
         sortEmployeeIdByDescending();
         confirmEmployeeDeleting();
+    }
+
+    @Step("Confirm employee deleting")
+    public void confirmEmployeeDeleting() {
+        $x(String.format("//a[contains(text(), %s)]/parent::td/preceding-sibling::td", employeeId)).click();
+        deleteButton.click();
+        dialogConfirmButton.click();
     }
 
     @Step("Check success message interaction")

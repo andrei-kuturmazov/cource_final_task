@@ -17,6 +17,8 @@ public class DashboardPage {
     private final SelenideElement dashBoardLegend = $x("//div[@id='panel_draggable_1_1']");
     private final SelenideElement dashBoardPendingRequests = $x("//div[@id='task-list-group-panel-menu_holder']");
 
+    /* Steps */
+
     @Step("Switch to Dashboard Tab")
     public void switchToDashboardTab() {
         dashBoardTabLink.click();

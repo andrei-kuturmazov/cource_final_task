@@ -31,6 +31,8 @@ public class UserPage {
     private final SelenideElement addButton = $x("//input[@id='btnAdd']");
     private final SelenideElement successMessage = $x("//div[@class ='message success fadable']");
 
+    /* Steps */
+
     @Step("Switch to administration tab")
     public void switchToAdminTabPanel() {
         adminPanelButton.click();
@@ -91,7 +93,7 @@ public class UserPage {
         employeeField.shouldBe(Condition.visible);
     }
 
-    @Step("Check user name block elements")
+    @Step("Check username block elements")
     public void checkUserNameBlock() {
         userNameLabel.shouldBe(Condition.visible);
         userNameField.shouldBe(Condition.visible);

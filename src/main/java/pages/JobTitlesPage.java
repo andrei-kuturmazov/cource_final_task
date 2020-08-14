@@ -21,6 +21,8 @@ public class JobTitlesPage {
     private final SelenideElement deleteButton = $x("//input[@id='btnDelete']");
     private final SelenideElement deleteConfirmationButton = $x("//input[@id='dialogDeleteBtn']");
 
+    /* Steps */
+
     @Step("Add button click")
     public void addButtonClick() {
         addButton.click();
