@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class JobTitlesPage {
 
-    private static List<String> jobTitles = Arrays.asList("The old master", "Master Chef", "National Hero");
+    private static final List<String> jobTitles = Arrays.asList("The old master", "Master Chef", "National Hero");
 
     private final SelenideElement jobDropdown = $x("//a[@id='menu_admin_Job']");
     private final SelenideElement jobTitlesLink = $x("//a[@id='menu_admin_viewJobTitleList']");
