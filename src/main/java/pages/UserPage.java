@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import utils.Property;
@@ -67,12 +68,12 @@ public class UserPage {
     }
 
     @Step("Fill and submit User form")
-    public void fillUserCreationFormAndSubmit() throws InterruptedException {
+    public void fillUserCreationFormAndSubmit() {
         employeeField.sendKeys(String.format("%s %s", Property.getProperty("employeeName"), Property.getProperty("employeeLastName")));
         userNameField.sendKeys(Property.getProperty("userName"));
         passwordField.sendKeys(Property.getProperty("userPassword"));
         confirmPasswordField.sendKeys(Property.getProperty("userPassword"));
-        Thread.sleep(1000);
+        Selenide.sleep(1000);
         saveButton.click();
     }
 

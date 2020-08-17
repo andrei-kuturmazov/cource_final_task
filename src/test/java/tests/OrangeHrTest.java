@@ -29,7 +29,7 @@ public class OrangeHrTest extends TestInit {
     @Test
     @DisplayName("User creation test")
     @Order(2)
-    void checkUserCreation() throws InterruptedException {
+    void checkUserCreation() {
         userPage.switchToAdminTabPanel();
         userPage.checkFormElements();
         userPage.checkValidationMessage();
@@ -81,7 +81,7 @@ public class OrangeHrTest extends TestInit {
     @Test
     @DisplayName("Assign leave form test")
     @Order(8)
-    void checkAssignLeave() throws InterruptedException {
+    void checkAssignLeave() {
         leavePage.switchToAssignLeaveTab();
         leavePage.checkFormValidationMessage();
         leavePage.checkFormElements();

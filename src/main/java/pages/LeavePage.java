@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import utils.Property;
@@ -68,7 +69,7 @@ public class LeavePage {
     }
 
     @Step("Fill and submit Leave form")
-    public void createLeaveRequest() throws InterruptedException {
+    public void createLeaveRequest() {
         employeeNameField.sendKeys(String.format("%s %s", Property.getProperty("employeeName"), Property.getProperty("employeeLastName")));
         leaveTypeDropdown.click();
         flmsLeaveOption.click();
@@ -76,7 +77,7 @@ public class LeavePage {
         firstDateOfMonth.click();
         endDateLeaveCalendar.click();
         fifthDateOfMonth.click();
-        Thread.sleep(1000);
+        Selenide.sleep(1000);
         assignButton.click();
         confirmButton.click();
     }
