@@ -42,24 +42,9 @@ public class LeavePage {
         assignLeaveLink.click();
     }
 
-    @Step("Submit Leave form")
-    public void submitForm() {
-        assignButton.click();
-    }
-
-    @Step("Confirm form adding")
-    public void confirmForm() {
-        confirmButton.click();
-    }
-
     @Step("Check form mandatory fields and validation message interaction")
     public void checkFormValidationMessage() {
-        submitForm();
-        checkValidationMessageInteraction();
-    }
-
-    @Step("Check validation message interaction")
-    public void checkValidationMessageInteraction() {
+        assignButton.click();
         employeeFieldValidationMessage.shouldBe(Condition.visible);
         leaveTypeValidationMessage.shouldBe(Condition.visible);
         startDateValidationMessage.shouldBe(Condition.visible);
@@ -68,60 +53,22 @@ public class LeavePage {
 
     @Step("Check form fields interaction")
     public void checkFormElements() {
-        checkFormLabelsInteraction();
-        checkEmployeeFieldBlock();
-        checkLeaveTypeBlock();
-        checkStartDateBlock();
-        checkEndDateBlock();
-        checkCommentsBlock();
-    }
-
-    @Step("Check Form labels interaction")
-    public void checkFormLabelsInteraction() {
         assignLeaveLabel.shouldBe(Condition.visible);
         leaveBalanceLabel.shouldBe(Condition.visible);
-    }
-
-    @Step("Check Employee block information")
-    public void checkEmployeeFieldBlock() {
         employeeNameLabel.shouldBe(Condition.visible);
         employeeNameField.shouldBe(Condition.visible);
-    }
-
-    @Step("Check Leave Type information")
-    public void checkLeaveTypeBlock() {
         leaveTypeLabel.shouldBe(Condition.visible);
         leaveTypeDropdown.shouldBe(Condition.visible);
-    }
-
-    @Step("Check Start Date Block")
-    public void checkStartDateBlock() {
         startDateLabel.shouldBe(Condition.visible);
         startDateLeaveCalendar.shouldBe(Condition.visible);
-    }
-
-    @Step("Check End Date Block")
-    public void checkEndDateBlock() {
         endDateLabel.shouldBe(Condition.visible);
         endDateLeaveCalendar.shouldBe(Condition.visible);
-    }
-
-    @Step("Check Comments Block")
-    public void checkCommentsBlock() {
         commentFieldLabel.shouldBe(Condition.visible);
         commentField.shouldBe(Condition.visible);
     }
 
     @Step("Fill and submit Leave form")
     public void createLeaveRequest() throws InterruptedException {
-        fillLeaveForm();
-        Thread.sleep(1000);
-        submitForm();
-        confirmForm();
-    }
-
-    @Step("Fill leave form")
-    public void fillLeaveForm() {
         employeeNameField.sendKeys(String.format("%s %s", Property.getProperty("employeeName"), Property.getProperty("employeeLastName")));
         leaveTypeDropdown.click();
         flmsLeaveOption.click();
@@ -129,6 +76,9 @@ public class LeavePage {
         firstDateOfMonth.click();
         endDateLeaveCalendar.click();
         fifthDateOfMonth.click();
+        Thread.sleep(1000);
+        assignButton.click();
+        confirmButton.click();
     }
 
     @Step("Check success message interaction")

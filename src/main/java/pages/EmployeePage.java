@@ -26,30 +26,15 @@ public class EmployeePage {
 
     /* Steps */
 
-    @Step("Switch to Employee list Tab")
-    public void switchToEmployeeList() {
-        pimTabLink.click();
-        employeeTabLink.click();
-    }
-
     @Step("Create Sales Manager test employee")
     public void createSalesManagerEmployee() {
-        switchToEmployeeList();
-        fillEmployeeForm();
-        addingSalesManagerJob();
-    }
-
-    @Step("Fill Employee form with data")
-    public void fillEmployeeForm() {
+        pimTabLink.click();
+        employeeTabLink.click();
         addEmployeeButton.click();
         firstNameField.sendKeys(Property.getProperty("employeeName"));
         lastNameField.sendKeys(Property.getProperty("employeeLastName"));
         employeeId = employeeIdField.getValue();
         saveButton.click();
-    }
-
-    @Step("Add Sales Manager job vacancy")
-    public void addingSalesManagerJob() {
         jobLink.click();
         saveButton.click();
         jobTitle.click();
@@ -57,21 +42,12 @@ public class EmployeePage {
         saveButton.click();
     }
 
-    @Step("Sort employees list by descending")
-    public void sortEmployeeIdByDescending() {
-        idHeader.click();
-        idHeader.click();
-    }
-
-    @Step("Delete test employee")
+    @Step("Delete test employee form list sorted by descending")
     public void deleteEmployee() {
-        switchToEmployeeList();
-        sortEmployeeIdByDescending();
-        confirmEmployeeDeleting();
-    }
-
-    @Step("Confirm employee deleting")
-    public void confirmEmployeeDeleting() {
+        pimTabLink.click();
+        employeeTabLink.click();
+        idHeader.click();
+        idHeader.click();
         $x(String.format("//a[contains(text(), %s)]/parent::td/preceding-sibling::td", employeeId)).click();
         deleteButton.click();
         dialogConfirmButton.click();
