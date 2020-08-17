@@ -23,21 +23,6 @@ public class JobTitlesPage {
 
     /* Steps */
 
-    @Step("Add button click")
-    public void addButtonClick() {
-        addButton.click();
-    }
-
-    @Step("Form save button click")
-    public void formSaveButtonClick() {
-        formSaveButton.click();
-    }
-
-    @Step("Input Job title name")
-    public void inputJobTitle(String item) {
-        jobTitleField.sendKeys(item);
-    }
-
     @Step("Switch to job titles tab")
     public void switchToJobTitlesTab() {
         jobDropdown.hover();
@@ -47,36 +32,21 @@ public class JobTitlesPage {
     @Step("Add List of new job titles")
     public void addJobTitle() {
         for (String item : jobTitles) {
-            addButtonClick();
-            inputJobTitle(item);
-            formSaveButtonClick();
-            checkSuccessMessage();
+            addButton.click();
+            jobTitleField.sendKeys(item);
+            formSaveButton.click();
+            successMessage.isDisplayed();
         }
-    }
-
-    @Step("Select Test Job Titles")
-    public void selectTestItem(String xPath) {
-        $x(xPath).click();
-    }
-
-    @Step("Delete and confirm ")
-    public void confirmJobTitleDeleting() {
-        deleteButton.click();
-        deleteConfirmationButton.click();
     }
 
     @Step("Delete created job titles")
     public void deleteJobTitles() {
         for (String item : jobTitles) {
             String xPath = String.format("//a[contains(text(), '%s')]/parent::td/preceding-sibling::td", item);
-            selectTestItem(xPath);
+            $x(xPath).click();
         }
-        confirmJobTitleDeleting();
-        checkSuccessMessage();
-    }
-
-    @Step("Check success message interaction")
-    public void checkSuccessMessage() {
+        deleteButton.click();
+        deleteConfirmationButton.click();
         successMessage.isDisplayed();
     }
 }

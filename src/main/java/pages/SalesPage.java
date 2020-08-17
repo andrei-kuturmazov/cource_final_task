@@ -27,27 +27,12 @@ public class SalesPage {
 
     /* Steps */
 
-    @Step("Switch to employee tab")
-    public void switchToPIMTab() {
-        pimTabLink.click();
-    }
-
     @Step("Open test Sales Manager profile")
     public void openSalesProfile() {
-        switchToPIMTab();
-        sortEmployeeIdByDescending();
-        selectEmployeeProfile();
-    }
-
-    @Step("Select Test Employee profile")
-    public void selectEmployeeProfile() {
+        pimTabLink.click();
+        idHeader.click();
+        idHeader.click();
         $x(String.format("//a[contains(text(), %s)]", EmployeePage.employeeId)).click();
-    }
-
-    @Step("Sort employees by descending")
-    public void sortEmployeeIdByDescending() {
-        idHeader.click();
-        idHeader.click();
     }
 
     @Step("Check personal details form elements")

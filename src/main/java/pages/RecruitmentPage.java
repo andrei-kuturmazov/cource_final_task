@@ -19,24 +19,14 @@ public class RecruitmentPage {
 
     /* Steps */
 
-    @Step("Add new candidate")
-    public void addCandidate() {
+    @Step("Add candidate and check candidate creation")
+    public void addCandidateAndCheckCreation() {
         recruitmentTabLink.click();
         addButton.click();
         candidateFirstNameField.sendKeys(Property.getProperty("candidateFirstName"));
         candidateLastNameField.sendKeys(Property.getProperty("candidateLastName"));
         candidateEmail.sendKeys(Property.getProperty("candidateEmail"));
         formSaveButton.click();
-    }
-
-    @Step("Add candidate and check candidate creation")
-    public void addCandidateAndCheckCreation() {
-        addCandidate();
-        checkErrorMessageInteraction();
-    }
-
-    @Step("Check error message interaction")
-    public void checkErrorMessageInteraction() {
         errorMessage.shouldBe(Condition.visible);
     }
 }

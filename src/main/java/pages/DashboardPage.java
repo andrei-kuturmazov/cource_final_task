@@ -26,25 +26,10 @@ public class DashboardPage {
 
     @Step("Check Dashboard page elements")
     public void checkDashboardElements() {
-        checkDashboardTitle();
-        checkQuickLaunchElements();
-        checkEmployeeDistributionElements();
-    }
-
-    @Step("Check Dashboard Title Interaction")
-    public void checkDashboardTitle() {
         dashBoardTitle.shouldBe(Condition.visible);
-    }
-
-    @Step("Check QuickLaunch Block elements")
-    public void checkQuickLaunchElements() {
         assignLeaveLink.shouldBe(Condition.visible);
         leaveListLink.shouldBe(Condition.visible);
         timeSheetLink.shouldBe(Condition.visible);
-    }
-
-    @Step("Check Employee Distribution Block elements")
-    public void checkEmployeeDistributionElements() {
         dashBoardDiagram.shouldBe(Condition.visible);
         dashBoardLegend.shouldBe(Condition.visible);
         dashBoardPendingRequests.shouldBe(Condition.visible);
