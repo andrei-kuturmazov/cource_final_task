@@ -77,8 +77,8 @@ public class LeavePage {
         firstDateOfMonth.click();
         endDateLeaveCalendar.click();
         fifthDateOfMonth.click();
-        Selenide.sleep(1000);
-        assignButton.click();
+//        Selenide.sleep(1000);
+        assignButton.waitUntil(Condition.visible, 2000).click();
         confirmButton.click();
     }
 

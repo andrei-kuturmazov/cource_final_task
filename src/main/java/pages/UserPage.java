@@ -74,8 +74,8 @@ public class UserPage {
         passwordField.sendKeys(Property.getProperty("userPassword"));
         confirmPasswordField.sendKeys(Property.getProperty("userPassword"));
 //        Selenide.sleep(1000);
-        saveButton.waitUntil(Condition.visible, 1000).click();
-//        saveButton.click();
+        saveButton.waitUntil(Condition.visible, 2000).click();
+        saveButton.click();
     }
 
     @Step("Check success creation message interaction")
