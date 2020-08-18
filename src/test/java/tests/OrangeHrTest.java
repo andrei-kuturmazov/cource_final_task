@@ -17,7 +17,7 @@ public class OrangeHrTest extends TestInit {
     EmployeePage employeePage = new EmployeePage();
 
     @Test
-    @DisplayName("Login test")
+    @DisplayName("Create test employee")
     @Order(1)
     void createTestEmployee() {
         employeePage.createSalesManagerEmployee();
