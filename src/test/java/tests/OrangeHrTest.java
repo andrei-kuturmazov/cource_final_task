@@ -8,7 +8,6 @@ import utils.TestInit;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class OrangeHrTest extends TestInit {
 
-    LoginPage loginPage = new LoginPage();
     LeavePage leavePage = new LeavePage();
     DashboardPage dashboardPage = new DashboardPage();
     JobTitlesPage jobTitlesPage = new JobTitlesPage();
@@ -20,9 +19,7 @@ public class OrangeHrTest extends TestInit {
     @Test
     @DisplayName("Login test")
     @Order(1)
-    void loginTest() {
-        loginPage.openLoginPage();
-        loginPage.loginToApp();
+    void createTestEmployee() {
         employeePage.createSalesManagerEmployee();
     }
 
@@ -50,6 +47,8 @@ public class OrangeHrTest extends TestInit {
     @DisplayName("Job titles deleting test")
     @Order(4)
     void checkJobTitlesDeleting() {
+        userPage.switchToAdminTabPanel();
+        jobTitlesPage.switchToJobTitlesTab();
         jobTitlesPage.deleteJobTitles();
     }
 
@@ -90,11 +89,10 @@ public class OrangeHrTest extends TestInit {
     }
 
     @Test
-    @DisplayName("Logout functionality test")
+    @DisplayName("Test employee delete")
     @Order(9)
-    void checkLogout() {
+    void deleteTestEmployee() {
         employeePage.deleteEmployee();
         Assertions.assertTrue(employeePage.checkSuccessMessage());
-        loginPage.logoutFromApp();
     }
 }

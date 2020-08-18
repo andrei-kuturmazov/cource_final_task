@@ -8,7 +8,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 
 
-public class TestInit {
+public class TestInit extends TestCommon {
     @BeforeAll
     static void setUp() {
         Configuration.timeout = 5000;
