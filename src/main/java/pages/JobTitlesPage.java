@@ -31,20 +31,20 @@ public class JobTitlesPage {
 
     @Step("Add List of new job titles")
     public void addJobTitle() {
-        for (String item : jobTitles) {
-            addButton.click();
-            jobTitleField.sendKeys(item);
-            formSaveButton.click();
-            successMessage.isDisplayed();
-        }
+        jobTitles.forEach(item -> {
+                    addButton.click();
+                    jobTitleField.sendKeys(item);
+                    formSaveButton.click();
+                    successMessage.isDisplayed();
+                });
     }
 
     @Step("Delete created job titles")
     public void deleteJobTitles() {
-        for (String item : jobTitles) {
+            jobTitles.forEach(item -> {
             String xPath = String.format("//a[contains(text(), '%s')]/parent::td/preceding-sibling::td", item);
             $x(xPath).click();
-        }
+        });
         deleteButton.click();
         deleteConfirmationButton.click();
         successMessage.isDisplayed();
