@@ -24,23 +24,25 @@ public class JobTitlesPage {
     /* Steps */
 
     @Step("Switch to job titles tab")
-    public void switchToJobTitlesTab() {
+    public JobTitlesPage switchToJobTitlesTab() {
         jobDropdown.hover();
         jobTitlesLink.click();
+        return this;
     }
 
     @Step("Add List of new job titles")
-    public void addJobTitle() {
+    public JobTitlesPage addJobTitle() {
         jobTitles.forEach(item -> {
                     addButton.click();
                     jobTitleField.sendKeys(item);
                     formSaveButton.click();
                     successMessage.isDisplayed();
                 });
+        return this;
     }
 
     @Step("Delete created job titles")
-    public void deleteJobTitles() {
+    public JobTitlesPage deleteJobTitles() {
             jobTitles.forEach(item -> {
             String xPath = String.format("//a[contains(text(), '%s')]/parent::td/preceding-sibling::td", item);
             $x(xPath).click();
@@ -48,5 +50,6 @@ public class JobTitlesPage {
         deleteButton.click();
         deleteConfirmationButton.click();
         successMessage.isDisplayed();
+        return this;
     }
 }

@@ -27,7 +27,7 @@ public class EmployeePage {
     /* Steps */
 
     @Step("Create Sales Manager test employee")
-    public void createSalesManagerEmployee() {
+    public EmployeePage createSalesManagerEmployee() {
         pimTabLink.click();
         employeeTabLink.click();
         addEmployeeButton.click();
@@ -40,10 +40,11 @@ public class EmployeePage {
         jobTitle.click();
         salesManagerOption.click();
         saveButton.click();
+        return this;
     }
 
     @Step("Delete test employee form list sorted by descending")
-    public void deleteEmployee() {
+    public EmployeePage deleteEmployee() {
         pimTabLink.click();
         employeeTabLink.click();
         idHeader.click();
@@ -51,6 +52,7 @@ public class EmployeePage {
         $x(String.format("//a[contains(text(), %s)]/parent::td/preceding-sibling::td", employeeId)).click();
         deleteButton.click();
         dialogConfirmButton.click();
+        return this;
     }
 
     @Step("Check success message interaction")

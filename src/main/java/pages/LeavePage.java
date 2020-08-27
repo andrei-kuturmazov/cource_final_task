@@ -1,12 +1,12 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import utils.Property;
 
 import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class LeavePage {
 
@@ -38,22 +38,24 @@ public class LeavePage {
     /* Steps */
 
     @Step("Switch to Assign Leave Tab")
-    public void switchToAssignLeaveTab() {
+    public LeavePage switchToAssignLeaveTab() {
         leaveMenuTabLink.click();
         assignLeaveLink.click();
+        return this;
     }
 
     @Step("Check form mandatory fields and validation message interaction")
-    public void checkFormValidationMessage() {
+    public LeavePage checkFormValidationMessage() {
         assignButton.click();
         employeeFieldValidationMessage.shouldBe(Condition.visible);
         leaveTypeValidationMessage.shouldBe(Condition.visible);
         startDateValidationMessage.shouldBe(Condition.visible);
         endDateValidationMessage.shouldBe(Condition.visible);
+        return this;
     }
 
     @Step("Check form fields interaction")
-    public void checkFormElements() {
+    public LeavePage checkFormElements() {
         assignLeaveLabel.shouldBe(Condition.visible);
         leaveBalanceLabel.shouldBe(Condition.visible);
         employeeNameLabel.shouldBe(Condition.visible);
@@ -66,10 +68,11 @@ public class LeavePage {
         endDateLeaveCalendar.shouldBe(Condition.visible);
         commentFieldLabel.shouldBe(Condition.visible);
         commentField.shouldBe(Condition.visible);
+        return this;
     }
 
     @Step("Fill and submit Leave form")
-    public void createLeaveRequest() {
+    public LeavePage createLeaveRequest() {
         employeeNameField.sendKeys(String.format("%s %s", Property.getProperty("employeeName"), Property.getProperty("employeeLastName")));
         leaveTypeDropdown.click();
         flmsLeaveOption.click();
@@ -77,9 +80,10 @@ public class LeavePage {
         firstDateOfMonth.click();
         endDateLeaveCalendar.click();
         fifthDateOfMonth.click();
-        Selenide.sleep(1000);
+        sleep(1000);
         assignButton.click();
         confirmButton.click();
+        return this;
     }
 
     @Step("Check success message interaction")

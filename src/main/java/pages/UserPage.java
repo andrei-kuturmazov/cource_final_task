@@ -1,12 +1,12 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import utils.Property;
 
 import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class UserPage {
 
@@ -35,19 +35,21 @@ public class UserPage {
     /* Steps */
 
     @Step("Switch to administration tab")
-    public void switchToAdminTabPanel() {
+    public UserPage switchToAdminTabPanel() {
         adminPanelButton.click();
+        return this;
     }
 
     @Step("Check validation message interaction")
-    public void checkValidationMessage() {
+    public UserPage checkValidationMessage() {
         saveButton.click();
         employeeFieldValidationMessage.shouldBe(Condition.visible);
         userNameFieldValidationMessage.shouldBe(Condition.visible);
+        return this;
     }
 
     @Step("Check form elements interaction")
-    public void checkFormElements() {
+    public UserPage checkFormElements() {
         addButton.click();
         formHeader.shouldBe(Condition.visible);
         userRoleLabel.shouldBe(Condition.visible);
@@ -65,16 +67,18 @@ public class UserPage {
         confirmPasswordField.shouldBe(Condition.visible);
         saveButton.shouldBe(Condition.visible);
         cancelButton.shouldBe(Condition.visible);
+        return this;
     }
 
     @Step("Fill and submit User form")
-    public void fillUserCreationFormAndSubmit() {
+    public UserPage fillUserCreationFormAndSubmit() {
         employeeField.sendKeys(String.format("%s %s", Property.getProperty("employeeName"), Property.getProperty("employeeLastName")));
         userNameField.sendKeys(Property.getProperty("userName"));
         passwordField.sendKeys(Property.getProperty("userPassword"));
         confirmPasswordField.sendKeys(Property.getProperty("userPassword"));
-        Selenide.sleep(1000);
+        sleep(1000);
         saveButton.click();
+        return this;
     }
 
     @Step("Check success creation message interaction")

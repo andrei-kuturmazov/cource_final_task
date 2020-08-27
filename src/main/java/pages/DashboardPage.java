@@ -20,12 +20,13 @@ public class DashboardPage {
     /* Steps */
 
     @Step("Switch to Dashboard Tab")
-    public void switchToDashboardTab() {
+    public DashboardPage switchToDashboardTab() {
         dashBoardTabLink.click();
+        return this;
     }
 
     @Step("Check Dashboard page elements")
-    public void checkDashboardElements() {
+    public DashboardPage checkDashboardElements() {
         dashBoardTitle.shouldBe(Condition.visible);
         assignLeaveLink.shouldBe(Condition.visible);
         leaveListLink.shouldBe(Condition.visible);
@@ -33,5 +34,6 @@ public class DashboardPage {
         dashBoardDiagram.shouldBe(Condition.visible);
         dashBoardLegend.shouldBe(Condition.visible);
         dashBoardPendingRequests.shouldBe(Condition.visible);
+        return this;
     }
 }

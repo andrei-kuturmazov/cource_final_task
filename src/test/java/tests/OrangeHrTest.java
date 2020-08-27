@@ -2,19 +2,10 @@ package tests;
 
 
 import org.junit.jupiter.api.*;
-import pages.*;
 import utils.TestInit;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class OrangeHrTest extends TestInit {
-
-    LeavePage leavePage = new LeavePage();
-    DashboardPage dashboardPage = new DashboardPage();
-    JobTitlesPage jobTitlesPage = new JobTitlesPage();
-    RecruitmentPage recruitmentPage = new RecruitmentPage();
-    UserPage userPage = new UserPage();
-    SalesPage salesPage = new SalesPage();
-    EmployeePage employeePage = new EmployeePage();
 
     @Test
     @DisplayName("Create test employee")
@@ -27,10 +18,10 @@ public class OrangeHrTest extends TestInit {
     @DisplayName("User creation test")
     @Order(2)
     void checkUserCreation() {
-        userPage.switchToAdminTabPanel();
-        userPage.checkFormElements();
-        userPage.checkValidationMessage();
-        userPage.fillUserCreationFormAndSubmit();
+        userPage.switchToAdminTabPanel()
+                .checkFormElements()
+                .checkValidationMessage()
+                .fillUserCreationFormAndSubmit();
         Assertions.assertTrue(userPage.checkSuccessMessage());
     }
 
@@ -39,8 +30,8 @@ public class OrangeHrTest extends TestInit {
     @Order(3)
     void checkJobTitlesAdding() {
         userPage.switchToAdminTabPanel();
-        jobTitlesPage.switchToJobTitlesTab();
-        jobTitlesPage.addJobTitle();
+        jobTitlesPage.switchToJobTitlesTab()
+                .addJobTitle();
     }
 
     @Test
@@ -48,8 +39,8 @@ public class OrangeHrTest extends TestInit {
     @Order(4)
     void checkJobTitlesDeleting() {
         userPage.switchToAdminTabPanel();
-        jobTitlesPage.switchToJobTitlesTab();
-        jobTitlesPage.deleteJobTitles();
+        jobTitlesPage.switchToJobTitlesTab()
+                .deleteJobTitles();
     }
 
     @Test
@@ -63,8 +54,8 @@ public class OrangeHrTest extends TestInit {
     @DisplayName("Dashboard elements interaction test")
     @Order(6)
     void checkDashboardElements() {
-        dashboardPage.switchToDashboardTab();
-        dashboardPage.checkDashboardElements();
+        dashboardPage.switchToDashboardTab()
+                .checkDashboardElements();
 
     }
 
@@ -81,10 +72,10 @@ public class OrangeHrTest extends TestInit {
     @DisplayName("Assign leave form test")
     @Order(8)
     void checkAssignLeave() {
-        leavePage.switchToAssignLeaveTab();
-        leavePage.checkFormValidationMessage();
-        leavePage.checkFormElements();
-        leavePage.createLeaveRequest();
+        leavePage.switchToAssignLeaveTab()
+                .checkFormValidationMessage()
+                .checkFormElements()
+                .createLeaveRequest();
         Assertions.assertTrue(leavePage.checkSuccessMessage());
     }
 
