@@ -28,15 +28,16 @@ public class SalesPage {
     /* Steps */
 
     @Step("Open test Sales Manager profile")
-    public void openSalesProfile() {
+    public SalesPage openSalesProfile() {
         pimTabLink.click();
         idHeader.click();
         idHeader.click();
         $x(String.format("//a[contains(text(), %s)]", EmployeePage.employeeId)).click();
+        return this;
     }
 
     @Step("Check personal details form elements")
-    public void checkPersonalDetailsFormElements() {
+    public SalesPage checkPersonalDetailsFormElements() {
         firstNameField.shouldBe(Condition.visible);
         middleNameField.shouldBe(Condition.visible);
         lastNameField.shouldBe(Condition.visible);
@@ -49,12 +50,14 @@ public class SalesPage {
         dateOfBirth.shouldBe(Condition.visible);
         editButton.shouldBe(Condition.visible);
         addAttachmentButton.shouldBe(Condition.visible);
+        return this;
     }
 
     @Step("Check test Sales manager personal data")
-    public void checkSalesManagerPersonalInfo() {
+    public SalesPage checkSalesManagerPersonalInfo() {
         Assertions.assertEquals(firstNameField.getValue(), Property.getProperty("employeeName"));
         Assertions.assertEquals(lastNameField.getValue(), Property.getProperty("employeeLastName"));
         Assertions.assertEquals(employeeIdField.getValue(), EmployeePage.employeeId);
+        return this;
     }
 }

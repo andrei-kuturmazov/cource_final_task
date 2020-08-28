@@ -63,9 +63,10 @@ public class OrangeHrTest extends TestInit {
     @DisplayName("Sales manager profile test")
     @Order(7)
     void checkSalesProfile() {
-        salesPage.openSalesProfile();
-        salesPage.checkPersonalDetailsFormElements();
-        salesPage.checkSalesManagerPersonalInfo();
+        salesPage.openSalesProfile()
+                .checkPersonalDetailsFormElements()
+                .checkSalesManagerPersonalInfo();
+
     }
 
     @Test
